@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Hair type:</b>
+  <%= @pet.hair_type_id %>
+</p>
+
+<p>
+  <b>Pet status:</b>
+  <%= @pet.pet_status_id %>
+</p>
+
+<p>
+  <b>Pet size:</b>
+  <%= @pet.pet_size_id %>
+</p>
+
+<p>
+  <b>Pet type:</b>
+  <%= @pet.pet_type.PetTypeName %>
+</p>
+
+<p>
+  <b>Shelter:</b>
+  <%= @pet.shelter_id %>
+</p>
+
+<p>
+  <b>Carer:</b>
+  <%= @pet.carer_id %>
+</p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @pet.nombre %>
+</p>
+
+<p>
+  <b>Fecha nacimiento:</b>
+  <%= @pet.fecha_nacimiento %>
+</p>
+
+<p>
+  <b>Comentarios:</b>
+  <%= @pet.comentarios %>
+</p>
+
+<p>
+  <b>Necesidades especiales:</b>
+  <%= @pet.necesidades_especiales %>
+</p>
+
+
+<%= link_to 'Edit', edit_pet_path(@pet) %> |
+<%= link_to 'Back', pets_path %>

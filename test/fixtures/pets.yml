@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  hair_type_id: 1
+  pet_status_id: 1
+  pet_size_id: 1
+  pet_type_id: 1
+  shelter_id: 1
+  carer_id: 1
+  nombre: MyString
+  fecha_nacimiento: 2014-11-02
+  comentarios: MyText
+  necesidades_especiales: MyText
+
+two:
+  hair_type_id: 1
+  pet_status_id: 1
+  pet_size_id: 1
+  pet_type_id: 1
+  shelter_id: 1
+  carer_id: 1
+  nombre: MyString
+  fecha_nacimiento: 2014-11-02
+  comentarios: MyText
+  necesidades_especiales: MyText

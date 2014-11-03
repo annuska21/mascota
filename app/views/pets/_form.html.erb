@@ -1,0 +1,57 @@
+<%= form_for(@pet) do |f| %>
+  <% if @pet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pet.errors.count, "error") %> prohibited this pet from being saved:</h2>
+
+      <ul>
+      <% @pet.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :hair_type_id %><br />
+    <%= f.number_field :hair_type_id %>
+  </div>
+  <div class="field">
+    <%= f.label :pet_status_id %><br />
+    <%= f.number_field :pet_status_id %>
+  </div>
+  <div class="field">
+    <%= f.label :pet_size_id %><br />
+    <%= f.number_field :pet_size_id %>
+  </div>
+  <div class="field">
+    <%= f.label :pet_type_id %><br />
+     <%= f.select(:pet_type_id, @PetType.map {|s| [s.PetTypeName, s.id]}) %>
+  </div>
+  <div class="field">
+    <%= f.label :shelter_id %><br />
+    <%= f.number_field :shelter_id %>
+  </div>
+  <div class="field">
+    <%= f.label :carer_id %><br />
+    <%= f.number_field :carer_id %>
+  </div>
+  <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :fecha_nacimiento %><br />   
+    <%= f.date_select(:fecha_nacimiento, options={:start_year=>Time.now.year-12, :end_year=>Time.now.year+0, :use_short_month => true, :discard_day => true }) %>
+  </div>
+  <div class="field">
+    <%= f.label :comentarios %><br />
+    <%= f.text_area :comentarios %>
+  </div>
+  <div class="field">
+    <%= f.label :necesidades_especiales %><br />
+    <%= f.text_area :necesidades_especiales %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

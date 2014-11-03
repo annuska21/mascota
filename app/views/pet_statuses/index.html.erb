@@ -1,0 +1,23 @@
+<h1>Listing pet_statuses</h1>
+
+<table>
+  <tr>
+    <th>Estado</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pet_statuses.each do |pet_status| %>
+  <tr>
+    <td><%= pet_status.estado %></td>
+    <td><%= link_to 'Show', pet_status %></td>
+    <td><%= link_to 'Edit', edit_pet_status_path(pet_status) %></td>
+    <td><%= link_to 'Destroy', pet_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Pet status', new_pet_status_path %>

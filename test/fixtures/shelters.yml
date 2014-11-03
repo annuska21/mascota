@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nombre: MyString
+  usuario: MyString
+  email: MyString
+  telefono: 1
+  password: MyString
+  web: MyString
+  requisitos_adopcion: MyText
+  descripcion_asociacion: MyText
+  acogida: false
+  detalles_acogida: MyText
+  informacion_donaciones: MyText
+  voluntariado: false
+  detalles_voluntariado: false
+  calle: MyString
+  provincia: MyString
+  cp: 1
+
+two:
+  nombre: MyString
+  usuario: MyString
+  email: MyString
+  telefono: 1
+  password: MyString
+  web: MyString
+  requisitos_adopcion: MyText
+  descripcion_asociacion: MyText
+  acogida: false
+  detalles_acogida: MyText
+  informacion_donaciones: MyText
+  voluntariado: false
+  detalles_voluntariado: false
+  calle: MyString
+  provincia: MyString
+  cp: 1

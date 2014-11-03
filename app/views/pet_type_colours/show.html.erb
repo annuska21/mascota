@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Color:</b>
+  <%= @pet_type_colour.color %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @pet_type_colour.descripcion %>
+</p>
+
+<p>
+  <b>Pet type:</b>
+  <%= @pet_type_colour.pet_type_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_pet_type_colour_path(@pet_type_colour) %> |
+<%= link_to 'Back', pet_type_colours_path %>

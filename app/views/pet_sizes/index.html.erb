@@ -1,0 +1,23 @@
+<h1>Listing pet_sizes</h1>
+
+<table>
+  <tr>
+    <th>Pet size</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pet_sizes.each do |pet_size| %>
+  <tr>
+    <td><%= pet_size.pet_size %></td>
+    <td><%= link_to 'Show', pet_size %></td>
+    <td><%= link_to 'Edit', edit_pet_size_path(pet_size) %></td>
+    <td><%= link_to 'Destroy', pet_size, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Pet size', new_pet_size_path %>

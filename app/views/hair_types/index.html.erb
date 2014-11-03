@@ -1,0 +1,23 @@
+<h1>Listing hair_types</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @hair_types.each do |hair_type| %>
+  <tr>
+    <td><%= hair_type.name %></td>
+    <td><%= link_to 'Show', hair_type %></td>
+    <td><%= link_to 'Edit', edit_hair_type_path(hair_type) %></td>
+    <td><%= link_to 'Destroy', hair_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Hair type', new_hair_type_path %>
