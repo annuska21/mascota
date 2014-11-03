@@ -1,4 +1,4 @@
-<%= form_for(@pet) do |f| %>
+<%= form_for(@pet, html: { multipart: true }) do |f| %>
   <% if @pet.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@pet.errors.count, "error") %> prohibited this pet from being saved:</h2>
@@ -12,36 +12,36 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :hair_type_id %><br />
-    <%= f.number_field :hair_type_id %>
-  </div>
-  <div class="field">
-    <%= f.label :pet_status_id %><br />
-    <%= f.number_field :pet_status_id %>
-  </div>
-  <div class="field">
-    <%= f.label :pet_size_id %><br />
-    <%= f.number_field :pet_size_id %>
-  </div>
-  <div class="field">
-    <%= f.label :pet_type_id %><br />
-     <%= f.select(:pet_type_id, @PetType.map {|s| [s.PetTypeName, s.id]}) %>
-  </div>
-  <div class="field">
-    <%= f.label :shelter_id %><br />
-    <%= f.number_field :shelter_id %>
-  </div>
-  <div class="field">
-    <%= f.label :carer_id %><br />
-    <%= f.number_field :carer_id %>
-  </div>
-  <div class="field">
-    <%= f.label :nombre %><br />
+    <%= f.label(:nombre, "Nombre") %><br />
     <%= f.text_field :nombre %>
   </div>
   <div class="field">
     <%= f.label :fecha_nacimiento %><br />   
     <%= f.date_select(:fecha_nacimiento, options={:start_year=>Time.now.year-12, :end_year=>Time.now.year+0, :use_short_month => true, :discard_day => true }) %>
+  </div>
+  <div class="field">
+    <%= f.label(:pet_status_id, "Estado") %><br />
+    <%= f.select(:pet_status_id, @pet_status.map {|s| [s.estado, s.id]}) %>
+  </div>
+  <div class="field">
+    <%= f.label(:pet_size_id, "Tamaño") %><br />
+     <%= f.select(:pet_size_id, @pet_size.map {|s| [s.pet_size, s.id]}) %>
+  </div>
+  <div class="field">
+    <%= f.label(:pet_type_id, "Tipo de mascota") %><br />
+     <%= f.select(:pet_type_id, @pet_type.map {|s| [s.PetTypeName, s.id]}) %>
+  </div>
+  <div class="field">
+    <%= f.label(:shelter_id, "Refugio" )%><br />
+    <%= f.select(:shelter_id, @shelter.map {|s| [s.nombre, s.id]}) %>
+  </div>
+  <div class="field">
+    <%= f.label(:carer_id, "Cuidador") %><br />
+    <%= f.select(:carer_id, @carer.map {|s| [s.nombre, s.id]}) %>
+  </div>
+    <div class="field">
+    <%= f.label(:hair_type_id, "Tipo de pelo") %><br />
+    <%= f.select(:hair_type_id, @hair_type.map {|s| [s.name, s.id]}) %>
   </div>
   <div class="field">
     <%= f.label :comentarios %><br />
@@ -54,4 +54,17 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+   <span class="picture">
+    <%= image_tag(@pet.picture_url) if @pet.picture? %>
+    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png'%>
+  </span>
+
 <% end %>
+<script type="text/javascript">
+  $('#pet_picture').bind('change', function() {
+    size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert('Maximum file size is 5MB. Please choose a smaller file.');
+    }
+  });
+</script>

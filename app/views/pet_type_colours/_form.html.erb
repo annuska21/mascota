@@ -1,27 +1,17 @@
 <%= form_for(@pet_type_colour) do |f| %>
-  <% if @pet_type_colour.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@pet_type_colour.errors.count, "error") %> prohibited this pet_type_colour from being saved:</h2>
-
-      <ul>
-      <% @pet_type_colour.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render :partial=>"layouts/errors_panel" , object: @pet_type_colour %>
 
   <div class="field">
     <%= f.label :color %><br />
     <%= f.text_field :color %>
   </div>
+    <div class="field">
+    <%= f.label(:pet_type_id, "Tipo de mascota") %><br />
+    <%= f.select(:pet_type_id, @pet_type.map {|s| [s.PetTypeName, s.id]}) %>
+  </div>
   <div class="field">
     <%= f.label :descripcion %><br />
     <%= f.text_area :descripcion %>
-  </div>
-  <div class="field">
-    <%= f.label :pet_type_id %><br />
-    <%= f.number_field :pet_type_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -1,15 +1,5 @@
 <%= form_for(@shelter) do |f| %>
-  <% if @shelter.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@shelter.errors.count, "error") %> prohibited this shelter from being saved:</h2>
-
-      <ul>
-      <% @shelter.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <%= render :partial=>"layouts/errors_panel" , object: @shelter %>
 
   <div class="field">
     <%= f.label :nombre %><br />
@@ -61,7 +51,7 @@
   </div>
   <div class="field">
     <%= f.label :detalles_voluntariado %><br />
-    <%= f.check_box :detalles_voluntariado %>
+    <%= f.text_area :detalles_voluntariado %>
   </div>
   <div class="field">
     <%= f.label :calle %><br />

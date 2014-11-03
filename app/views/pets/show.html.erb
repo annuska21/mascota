@@ -1,45 +1,43 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Hair type:</b>
-  <%= @pet.hair_type_id %>
-</p>
-
-<p>
-  <b>Pet status:</b>
-  <%= @pet.pet_status_id %>
-</p>
-
-<p>
-  <b>Pet size:</b>
-  <%= @pet.pet_size_id %>
-</p>
-
-<p>
-  <b>Pet type:</b>
-  <%= @pet.pet_type.PetTypeName %>
-</p>
-
-<p>
-  <b>Shelter:</b>
-  <%= @pet.shelter_id %>
-</p>
-
-<p>
-  <b>Carer:</b>
-  <%= @pet.carer_id %>
-</p>
+<%= image_tag(@pet.picture_url) if @pet.picture? %>
 
 <p>
   <b>Nombre:</b>
   <%= @pet.nombre %>
+</p>
+<p>
+  <b>Estado:</b>
+  <%= @pet.pet_status.estado %>
+</p>
+
+<p>
+  <b>Tamaño:</b>
+  <%= @pet.pet_size.pet_size %>
+</p>
+
+<p>
+  <b>Tipo de mascota:</b>
+  <%= @pet.pet_type.PetTypeName %>
+</p>
+
+<p>
+  <b>Refugio:</b>
+  <%= @pet.shelter.nombre %>
+</p>
+
+<p>
+  <b>Cuidador:</b>
+  <%= @pet.carer.nombre %>
 </p>
 
 <p>
   <b>Fecha nacimiento:</b>
   <%= @pet.fecha_nacimiento %>
 </p>
-
+<p>
+  <b>Tipo de pelo:</b>
+  <%= @pet.hair_type.name %>
+</p>
 <p>
   <b>Comentarios:</b>
   <%= @pet.comentarios %>

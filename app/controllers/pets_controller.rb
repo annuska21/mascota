@@ -1,6 +1,5 @@
 class PetsController < ApplicationController
-  # GET /pets
-  # GET /pets.json
+
   def index
     @pets = Pet.all
 
@@ -14,51 +13,65 @@ class PetsController < ApplicationController
 
   def new
     @pet = Pet.new
-    @PetType = PetType.order('PetTypeName ASC')
+    @pet_type = PetType.order('PetTypeName ASC')
+    @hair_type = HairType.order('name ASC')
+    @carer = Carer.order('nombre ASC')
+    @shelter = Shelter.order('nombre ASC')
+    @pet_size = PetSize.order('pet_size ASC')
+    @pet_status = PetStatus.order('estado DESC')
   end
 
-  # GET /pets/1/edit
   def edit
     @pet = Pet.find(params[:id])
-    @PetType = PetType.order('PetTypeName ASC')
+    @pet_type = PetType.order('PetTypeName ASC')
+    @hair_type = HairType.order('name ASC')
+    @carer = Carer.order('nombre ASC')
+    @shelter = Shelter.order('nombre ASC')
+    @pet_size = PetSize.order('pet_size ASC')
+    @pet_status = PetStatus.order('estado ASC')
   end
 
-  # POST /pets
-  # POST /pets.json
+
   def create
     @pet = Pet.new(params[:pet])
 
      
       if @pet.save
       
-      redirect_to action: "index", notice: 'Pet was successfully created.'
+      redirect_to action: "index", notice: 'Se ha creado la mascota.'
    
       else
-       @PetType = PetType.order('PetTypeName ASC')
+       @pet_type = PetType.order('PetTypeName ASC')
+       @hair_type = HairType.order('name ASC')
+       @carer = Carer.order('nombre ASC')
+       @shelter = Shelter.order('nombre ASC')
+       @pet_size = PetSize.order('pet_size ASC')
+       @pet_status = PetStatus.order('estado ASC')
        render action: "new" 
      
 
     end
   end
 
-  # PUT /pets/1
-  # PUT /pets/1.json
   def update
     @pet = Pet.find(params[:id])
 
       if @pet.update_attributes(params[:pet])
-        redirect_to action: "index", notice: 'Pet was successfully updated.'
+        redirect_to action: "index", notice: 'Actualizado.'
      
       else
-        @PetType = PetType.order('PetTypeName ASC')
+        @pet_type = PetType.order('PetTypeName ASC')
+        @hair_type = HairType.order('name ASC')
+        @carer = Carer.order('nombre ASC')
+        @shelter = Shelter.order('nombre ASC')
+        @pet_size = PetSize.order('pet_size ASC')
+        @pet_status = PetStatus.order('estado ASC')
         render action: "edit"
        
       end
 
   end
 
-  # DELETE /pets/1
-  # DELETE /pets/1.json
   def destroy
     @pet = Pet.find(params[:id])
     @pet.destroy

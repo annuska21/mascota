@@ -3,11 +3,7 @@ class SheltersController < ApplicationController
   # GET /shelters.json
   def index
     @shelters = Shelter.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @shelters }
-    end
+  #  @pet_adoption = Shelter.pet.en_adopcion
   end
 
   # GET /shelters/1
@@ -15,10 +11,6 @@ class SheltersController < ApplicationController
   def show
     @shelter = Shelter.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @shelter }
-    end
   end
 
   # GET /shelters/new
@@ -26,10 +18,7 @@ class SheltersController < ApplicationController
   def new
     @shelter = Shelter.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @shelter }
-    end
+
   end
 
   # GET /shelters/1/edit
@@ -42,15 +31,12 @@ class SheltersController < ApplicationController
   def create
     @shelter = Shelter.new(params[:shelter])
 
-    respond_to do |format|
       if @shelter.save
-        format.html { redirect_to @shelter, notice: 'Shelter was successfully created.' }
-        format.json { render json: @shelter, status: :created, location: @shelter }
+        redirect_to action: "index", notice: 'El refugio se ha creado.'
       else
-        format.html { render action: "new" }
-        format.json { render json: @shelter.errors, status: :unprocessable_entity }
+        render action: "new"
       end
-    end
+
   end
 
   # PUT /shelters/1
@@ -58,15 +44,15 @@ class SheltersController < ApplicationController
   def update
     @shelter = Shelter.find(params[:id])
 
-    respond_to do |format|
+
       if @shelter.update_attributes(params[:shelter])
-        format.html { redirect_to @shelter, notice: 'Shelter was successfully updated.' }
-        format.json { head :no_content }
+        redirect_to action:"index", notice: 'El refugio se ha modificado.'
+      
       else
-        format.html { render action: "edit" }
-        format.json { render json: @shelter.errors, status: :unprocessable_entity }
+        render action: "edit"
+       
       end
-    end
+
   end
 
   # DELETE /shelters/1
@@ -75,9 +61,9 @@ class SheltersController < ApplicationController
     @shelter = Shelter.find(params[:id])
     @shelter.destroy
 
-    respond_to do |format|
-      format.html { redirect_to shelters_url }
-      format.json { head :no_content }
-    end
+
+      redirect_to shelters_url
+
+  
   end
 end

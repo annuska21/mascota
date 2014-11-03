@@ -1,15 +1,5 @@
 <%= form_for(@pet_size) do |f| %>
-  <% if @pet_size.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@pet_size.errors.count, "error") %> prohibited this pet_size from being saved:</h2>
-
-      <ul>
-      <% @pet_size.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+   <%= render :partial=>"layouts/errors_panel" , object: @pet_size %>
 
   <div class="field">
     <%= f.label :pet_size %><br />

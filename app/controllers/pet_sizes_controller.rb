@@ -4,10 +4,7 @@ class PetSizesController < ApplicationController
   def index
     @pet_sizes = PetSize.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @pet_sizes }
-    end
+
   end
 
   # GET /pet_sizes/1
@@ -15,10 +12,6 @@ class PetSizesController < ApplicationController
   def show
     @pet_size = PetSize.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @pet_size }
-    end
   end
 
   # GET /pet_sizes/new
@@ -26,10 +19,7 @@ class PetSizesController < ApplicationController
   def new
     @pet_size = PetSize.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @pet_size }
-    end
+
   end
 
   # GET /pet_sizes/1/edit
@@ -44,40 +34,34 @@ class PetSizesController < ApplicationController
 
     respond_to do |format|
       if @pet_size.save
-        format.html { redirect_to @pet_size, notice: 'Pet size was successfully created.' }
-        format.json { render json: @pet_size, status: :created, location: @pet_size }
+        redirect_to action: "index", notice: 'El tamaño de mascota ha sido creado.'
+      
       else
-        format.html { render action: "new" }
-        format.json { render json: @pet_size.errors, status: :unprocessable_entity }
+        render action: "new"
+       
       end
     end
   end
 
-  # PUT /pet_sizes/1
-  # PUT /pet_sizes/1.json
   def update
     @pet_size = PetSize.find(params[:id])
 
-    respond_to do |format|
+
       if @pet_size.update_attributes(params[:pet_size])
-        format.html { redirect_to @pet_size, notice: 'Pet size was successfully updated.' }
-        format.json { head :no_content }
+        redirect_to action: "index", notice: 'El tamaño de mascota se ha actualizado.'
+       
       else
-        format.html { render action: "edit" }
-        format.json { render json: @pet_size.errors, status: :unprocessable_entity }
+        render action: "edit"
+
       end
-    end
+
   end
 
-  # DELETE /pet_sizes/1
-  # DELETE /pet_sizes/1.json
   def destroy
     @pet_size = PetSize.find(params[:id])
     @pet_size.destroy
+    redirect_to pet_sizes_url
 
-    respond_to do |format|
-      format.html { redirect_to pet_sizes_url }
-      format.json { head :no_content }
-    end
+
   end
 end

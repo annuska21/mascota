@@ -1,4 +1,4 @@
-<h1>Listing carers</h1>
+<h1>Listado cuidadores</h1>
 
 <table>
   <tr>
@@ -27,13 +27,13 @@
     <td><%= carer.provincia %></td>
     <td><%= carer.cp %></td>
     <td><%= carer.comentarios %></td>
-    <td><%= link_to 'Show', carer %></td>
-    <td><%= link_to 'Edit', edit_carer_path(carer) %></td>
-    <td><%= link_to 'Destroy', carer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><% link_to 'Show', carer %></td>
+    <td><%= link_to 'Editar', edit_carer_path(carer) %></td>
+    <td><%= link_to 'Borrar', carer, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Carer', new_carer_path %>
+<%= link_to 'Nuevo cuidador', new_carer_path %>

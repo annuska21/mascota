@@ -1,8 +1,8 @@
-<h1>Listing pet_sizes</h1>
+<h1>Listado tamaño</h1>
 
 <table>
   <tr>
-    <th>Pet size</th>
+    <th>Tamaño</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,13 +11,13 @@
 <% @pet_sizes.each do |pet_size| %>
   <tr>
     <td><%= pet_size.pet_size %></td>
-    <td><%= link_to 'Show', pet_size %></td>
-    <td><%= link_to 'Edit', edit_pet_size_path(pet_size) %></td>
-    <td><%= link_to 'Destroy', pet_size, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><% link_to 'Show', pet_size %></td>
+    <td><%= link_to 'Editar', edit_pet_size_path(pet_size) %></td>
+    <td><%= link_to 'Borrar', pet_size, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Pet size', new_pet_size_path %>
+<%= link_to 'Nuevo tamaño', new_pet_size_path %>

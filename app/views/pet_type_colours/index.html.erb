@@ -1,10 +1,10 @@
-<h1>Listing pet_type_colours</h1>
+<h1>Listado colores</h1>
 
 <table>
   <tr>
     <th>Color</th>
     <th>Descripcion</th>
-    <th>Pet type</th>
+    <th>Tipo de mascota</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,14 +14,14 @@
   <tr>
     <td><%= pet_type_colour.color %></td>
     <td><%= pet_type_colour.descripcion %></td>
-    <td><%= pet_type_colour.pet_type_id %></td>
-    <td><%= link_to 'Show', pet_type_colour %></td>
-    <td><%= link_to 'Edit', edit_pet_type_colour_path(pet_type_colour) %></td>
-    <td><%= link_to 'Destroy', pet_type_colour, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= pet_type_colour.pet_type.PetTypeName %></td>
+    <td><% link_to 'Show', pet_type_colour %></td>
+    <td><%= link_to 'Editar', edit_pet_type_colour_path(pet_type_colour) %></td>
+    <td><%= link_to 'Borrar', pet_type_colour, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Pet type colour', new_pet_type_colour_path %>
+<%= link_to 'Nuevo color', new_pet_type_colour_path %>

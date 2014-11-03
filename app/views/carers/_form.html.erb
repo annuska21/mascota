@@ -1,15 +1,5 @@
 <%= form_for(@carer) do |f| %>
-  <% if @carer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@carer.errors.count, "error") %> prohibited this carer from being saved:</h2>
-
-      <ul>
-      <% @carer.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render :partial=>"layouts/errors_panel" , object: @carer %>
 
   <div class="field">
     <%= f.label :nombre %><br />

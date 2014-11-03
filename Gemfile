@@ -44,3 +44,7 @@ end
 
 # To use debugger
 # gem 'debugger'
+# Imagenes, subida, manejo y produccion
+gem 'carrierwave', '~> 0.10.0'
+gem 'mini_magick', '~> 3.8.1'
+#gem 'fog', '~> 1.24.0'

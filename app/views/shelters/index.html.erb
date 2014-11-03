@@ -1,20 +1,11 @@
-<h1>Listing shelters</h1>
-
+<h1>Listado Refugios</h1>
+<%= link_to 'Nuevo refugio', new_shelter_path %>
 <table>
   <tr>
     <th>Nombre</th>
-    <th>Usuario</th>
-    <th>Email</th>
-    <th>Telefono</th>
-    <th>Password</th>
-    <th>Web</th>
-    <th>Requisitos adopcion</th>
-    <th>Descripcion asociacion</th>
+    <th>Número de mascotas</th>
     <th>Acogida</th>
-    <th>Detalles acogida</th>
-    <th>Informacion donaciones</th>
     <th>Voluntariado</th>
-    <th>Detalles voluntariado</th>
     <th>Calle</th>
     <th>Provincia</th>
     <th>Cp</th>
@@ -26,28 +17,19 @@
 <% @shelters.each do |shelter| %>
   <tr>
     <td><%= shelter.nombre %></td>
-    <td><%= shelter.usuario %></td>
-    <td><%= shelter.email %></td>
-    <td><%= shelter.telefono %></td>
-    <td><%= shelter.password %></td>
-    <td><%= shelter.web %></td>
-    <td><%= shelter.requisitos_adopcion %></td>
-    <td><%= shelter.descripcion_asociacion %></td>
+    <td><%= shelter.pets.en_adopcion.size %></td>
     <td><%= shelter.acogida %></td>
-    <td><%= shelter.detalles_acogida %></td>
-    <td><%= shelter.informacion_donaciones %></td>
     <td><%= shelter.voluntariado %></td>
-    <td><%= shelter.detalles_voluntariado %></td>
     <td><%= shelter.calle %></td>
     <td><%= shelter.provincia %></td>
     <td><%= shelter.cp %></td>
-    <td><%= link_to 'Show', shelter %></td>
-    <td><%= link_to 'Edit', edit_shelter_path(shelter) %></td>
-    <td><%= link_to 'Destroy', shelter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><% link_to 'Show', shelter %></td>
+    <td><%= link_to 'Editar', edit_shelter_path(shelter) %></td>
+    <td><%= link_to 'Borrar', shelter, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Shelter', new_shelter_path %>
+

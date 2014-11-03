@@ -4,10 +4,7 @@ class PetStatusesController < ApplicationController
   def index
     @pet_statuses = PetStatus.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @pet_statuses }
-    end
+
   end
 
   # GET /pet_statuses/1
@@ -15,10 +12,6 @@ class PetStatusesController < ApplicationController
   def show
     @pet_status = PetStatus.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @pet_status }
-    end
   end
 
   # GET /pet_statuses/new
@@ -26,10 +19,6 @@ class PetStatusesController < ApplicationController
   def new
     @pet_status = PetStatus.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @pet_status }
-    end
   end
 
   # GET /pet_statuses/1/edit
@@ -42,15 +31,14 @@ class PetStatusesController < ApplicationController
   def create
     @pet_status = PetStatus.new(params[:pet_status])
 
-    respond_to do |format|
       if @pet_status.save
-        format.html { redirect_to @pet_status, notice: 'Pet status was successfully created.' }
-        format.json { render json: @pet_status, status: :created, location: @pet_status }
+        redirect_to action: "index", notice: 'El estado se ha creado.'
+  
       else
-        format.html { render action: "new" }
-        format.json { render json: @pet_status.errors, status: :unprocessable_entity }
+       render action: "new"
+      
       end
-    end
+
   end
 
   # PUT /pet_statuses/1
@@ -58,15 +46,15 @@ class PetStatusesController < ApplicationController
   def update
     @pet_status = PetStatus.find(params[:id])
 
-    respond_to do |format|
+
       if @pet_status.update_attributes(params[:pet_status])
-        format.html { redirect_to @pet_status, notice: 'Pet status was successfully updated.' }
-        format.json { head :no_content }
+        redirect_to action: "index", notice: 'El estado se ha actualizado.'
+   
       else
-        format.html { render action: "edit" }
-        format.json { render json: @pet_status.errors, status: :unprocessable_entity }
+        render action: "edit"
+       
       end
-    end
+    
   end
 
   # DELETE /pet_statuses/1
@@ -75,9 +63,8 @@ class PetStatusesController < ApplicationController
     @pet_status = PetStatus.find(params[:id])
     @pet_status.destroy
 
-    respond_to do |format|
-      format.html { redirect_to pet_statuses_url }
-      format.json { head :no_content }
-    end
+
+      redirect_to pet_statuses_url
+ 
   end
 end
