@@ -1,4 +1,4 @@
-class PetTypeColoursController < ApplicationController
+class Admin::PetTypeColoursController < Admin::AdminController
   # GET /pet_type_colours
   # GET /pet_type_colours.json
   def index

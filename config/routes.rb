@@ -1,15 +1,14 @@
 Mascota::Application.routes.draw do
  
-  devise_for :shelters, :module => "shelter"
-
-
-  get 'admin', :to => "access#index"
+  devise_for :shelters
 
   get "access/login"
 
   get "access/logout"
 
   post "access/attempt_login"
+
+
 
 
   get "static_pages/home"
@@ -20,34 +19,33 @@ Mascota::Application.routes.draw do
 
   get "static_pages/shelters"
 
-  resources :pet_sizes
 
 
   resources :pets
 
+  scope :module => 'shelter' do
+    resources :shelters do
+      resources :pets
 
-  resources :pet_type_colours
-
-
-  resources :pet_type_breeds
-
-
-  resources :shelters do
-    resources :pets
-
+    end
   end
 
 
   resources :carers
 
 
-  resources :pet_types
+  namespace  :admin do
+    resources :pet_type_colours
+    resources :pet_sizes
+    resources :pet_type_breeds
+    resources :pet_types
+    resources :pet_statuses
+    resources :hair_types
+  end
 
 
-  resources :pet_statuses
 
 
-  resources :hair_types
 
 
   # The priority is based upon order of creation:

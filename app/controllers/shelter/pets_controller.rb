@@ -1,6 +1,5 @@
-class Shelters::PetsController < ApplicationController
+class Shelter::PetsController < Shelter::SheltersController
   
-  before_filter :find_shelter
   
   def index
   #  @pets = @shelter.Pet.all

@@ -1,4 +1,4 @@
-class PetSizesController < ApplicationController
+class Admin::PetSizesController < Admin::AdminController
   # GET /pet_sizes
   # GET /pet_sizes.json
   def index

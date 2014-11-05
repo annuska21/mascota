@@ -1,4 +1,4 @@
-class PetTypesController < ApplicationController
+class Admin::PetTypesController < Admin::AdminController
 
   def index
     @pet_types = PetType.all

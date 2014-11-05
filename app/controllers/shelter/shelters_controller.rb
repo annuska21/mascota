@@ -1,9 +1,11 @@
-class SheltersController < ApplicationController
+class Shelter::SheltersController < ApplicationController
   
+  before_filter :authenticate_shelter!
 
   # GET /shelters
   # GET /shelters.json
   def index
+    debugger
     @shelters = Shelter.all
   #  @pet_adoption = Shelter.pet.en_adopcion
   end

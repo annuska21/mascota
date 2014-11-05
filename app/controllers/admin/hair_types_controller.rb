@@ -1,4 +1,5 @@
-class HairTypesController < ApplicationController
+class Admin::HairTypesController < Admin::AdminController
+  
   # GET /hair_types
   # GET /hair_types.json
   def index

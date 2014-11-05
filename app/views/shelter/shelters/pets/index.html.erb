@@ -1,0 +1,34 @@
+<h1>Listado de mascotas</h1>
+<%= link_to 'Nueva mascota', new_pet_path(:shelter_id => @shelter.id) %>
+<table>
+  <tr>
+
+    <th></th>
+    <th>Tipo de mascota</th>
+    <th>Nombre</th>
+    <th>Refugio</th>
+    <th>Fecha nacimiento</th>
+    <th>Tamaño</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+    <% @pets.each do |pet| %>
+  <tr>
+    <td><%= image_tag(pet.picture_url, :size => '150x150', :alt => 'imagen') if pet.picture? %></td>
+    <td><%= pet.pet_type.PetTypeName %></td>
+    <td><%= pet.nombre %></td>
+    <td><%= pet.shelter.nombre %></td>    
+    <td><%= pet.fecha_nacimiento %></td>
+    <td><%= pet.pet_size.pet_size %></td>
+    <td><%= link_to 'Mostrar', pet %></td>
+    <td><%= link_to 'Editar', edit_pet_path(pet) %></td>
+    <td><%= link_to 'Borrar', pet, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
