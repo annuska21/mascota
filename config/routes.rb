@@ -16,6 +16,8 @@ Mascota::Application.routes.draw do
 
   get "static_pages/care"
 
+  get "static_pages/shelters"
+
   resources :pet_sizes
 
 
@@ -28,7 +30,10 @@ Mascota::Application.routes.draw do
   resources :pet_type_breeds
 
 
-  resources :shelters
+  resources :shelters do
+    resources :pets
+
+  end
 
 
   resources :carers
@@ -92,7 +97,7 @@ Mascota::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'static_pages#home'
 
   # See how all your routes lay out with "rake routes"
 

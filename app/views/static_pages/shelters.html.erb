@@ -1,5 +1,4 @@
 <h1>Listado Refugios</h1>
-<%= link_to 'Nuevo refugio', new_shelter_path %>
 <table>
   <tr>
     <th>Nombre</th>
@@ -11,7 +10,7 @@
     <th>Cp</th>
     <th></th>
     <th></th>
-    <th></th>
+
   </tr>
 
 <% @shelters.each do |shelter| %>
@@ -24,9 +23,7 @@
     <td><%= shelter.provincia %></td>
     <td><%= shelter.cp %></td>
     <td><%= link_to 'Ver mascotas', shelter_pets_path(shelter.id) %></td>
-    <td><% link_to 'Show', shelter %></td>
-    <td><%= link_to 'Editar', edit_shelter_path(shelter) %></td>
-    <td><%= link_to 'Borrar', shelter, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
+    <td><%= link_to 'Show', shelter %></td>
   </tr>
 <% end %>
 </table>

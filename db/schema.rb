@@ -103,4 +103,10 @@ ActiveRecord::Schema.define(:version => 20141104140235) do
     t.string   "password_digest"
   end
 
+  create_table "sizes", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
 end

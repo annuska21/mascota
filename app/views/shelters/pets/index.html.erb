@@ -1,4 +1,5 @@
 <h1>Listado de mascotas</h1>
+<%= link_to 'Nueva mascota', new_pet_path(:shelter_id => @shelter.id) %>
 <table>
   <tr>
 
@@ -8,7 +9,9 @@
     <th>Refugio</th>
     <th>Fecha nacimiento</th>
     <th>Tamaño</th>
-
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
 
     <% @pets.each do |pet| %>
@@ -20,6 +23,8 @@
     <td><%= pet.fecha_nacimiento %></td>
     <td><%= pet.pet_size.pet_size %></td>
     <td><%= link_to 'Mostrar', pet %></td>
+    <td><%= link_to 'Editar', edit_pet_path(pet) %></td>
+    <td><%= link_to 'Borrar', pet, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
   </tr>
 <% end %>
 </table>

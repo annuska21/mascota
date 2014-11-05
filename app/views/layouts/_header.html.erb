@@ -6,8 +6,16 @@
         <li><%= link_to "Home", "#" %></li>
         <li><%= link_to "Buscador", pets_path %></li>
         <li><%= link_to "Primeros pasos", '#' %></li>
-        <li><%= link_to "Asociaciones", shelters_path %></li>
-        <li><%= link_to "Administracion", :controller => "access" %></li>
+        <li><%= link_to "Asociaciones", static_pages_shelters_path %></li>
+        
+        <%if user_signed %>
+          <li><%= link_to "logeado", :controller => "access" %></li>
+        <%else %>
+          <li><%= link_to "No logeado", :controller => "access" %></li>
+          <%end%>
+        <li><%= link_to "login", :controller => "access" %></li>
+
+
       </ul>
     </nav>
   </div>

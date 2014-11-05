@@ -1,8 +1,17 @@
-class PetsController < ApplicationController
+class Shelters::PetsController < ApplicationController
   
+  before_filter :confirm_logged_in, :except => [:index, :show]
+  before_filter :find_shelter
   
   def index
-    @pets = Pet.en_adopcion
+  #  @pets = @shelter.Pet.all
+    if params[:shelter_id]
+        
+        @pets = Pet.where(:shelter_id => @shelter.id).en_adopcion
+    else
+        @pets = Pet.en_adopcion
+    end
+
  
   end
 
@@ -82,6 +91,13 @@ class PetsController < ApplicationController
    
   end
 
+  def find_shelter
+    if params[:shelter_id]
+      @shelter = Shelter.find(params[:shelter_id])
+    else
+
+    end
+  end
 
 
 end
