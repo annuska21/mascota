@@ -24,6 +24,15 @@
 #
 
 class Shelter < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable,
+  # :lockable, :timeoutable and :omniauthable, :registerable,
+  #:recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable
+
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me
+
   has_many :pets
   validates :nombre, presence: true
   validates :usuario, presence:true, uniqueness: true
@@ -32,6 +41,6 @@ class Shelter < ActiveRecord::Base
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: true
-  has_secure_password
-  attr_accessible :acogida, :calle, :cp, :descripcion_asociacion, :detalles_acogida, :detalles_voluntariado, :email, :informacion_donaciones, :nombre, :password, :provincia, :requisitos_adopcion, :telefono, :usuario, :voluntariado, :web
+                    
+  attr_accessible :acogida, :calle, :cp, :descripcion_asociacion, :detalles_acogida, :detalles_voluntariado, :email, :informacion_donaciones, :nombre, :provincia, :requisitos_adopcion, :telefono, :usuario, :voluntariado, :web
 end

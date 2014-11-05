@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141104140235) do
+ActiveRecord::Schema.define(:version => 20141105155954) do
 
   create_table "carers", :force => true do |t|
     t.string   "nombre"
@@ -85,7 +85,6 @@ ActiveRecord::Schema.define(:version => 20141104140235) do
   create_table "shelters", :force => true do |t|
     t.string   "nombre"
     t.string   "usuario"
-    t.string   "email"
     t.integer  "telefono"
     t.string   "web"
     t.text     "requisitos_adopcion"
@@ -98,10 +97,13 @@ ActiveRecord::Schema.define(:version => 20141104140235) do
     t.string   "calle"
     t.string   "provincia"
     t.integer  "cp"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
-    t.string   "password_digest"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
   end
+
+  add_index "shelters", ["email"], :name => "index_shelters_on_email", :unique => true
 
   create_table "sizes", :force => true do |t|
     t.string   "name"

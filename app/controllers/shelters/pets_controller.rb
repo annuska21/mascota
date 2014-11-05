@@ -1,6 +1,5 @@
 class Shelters::PetsController < ApplicationController
   
-  before_filter :confirm_logged_in, :except => [:index, :show]
   before_filter :find_shelter
   
   def index

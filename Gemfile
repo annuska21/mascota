@@ -8,7 +8,7 @@ gem 'rails', '3.2.19'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
-
+gem 'devise'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -35,7 +35,7 @@ end
 #gem 'bcrypt', '~> 3.1.9'
 
 # To use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.0.0'
+#gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

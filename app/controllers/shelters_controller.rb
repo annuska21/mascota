@@ -1,6 +1,5 @@
 class SheltersController < ApplicationController
   
-  before_filter :confirm_logged_in, :except => [:index]
 
   # GET /shelters
   # GET /shelters.json

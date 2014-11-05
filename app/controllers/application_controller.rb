@@ -1,14 +1,17 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+
+
   private
 
-  def confirm_logged_in
-    unless session[:shelter_id]
-      flash[:notice]="Por favor logate"
-      redirect_to(:action => 'login')
-      return false
-    else
-      return true
+  
+  def confirm_admin
+    
+    authenticate_or_request_with_http_basic('Acceso admin') do |username, password|
+      username == 'ana' && password == '123456'
     end
+ 
   end
+
+
 end

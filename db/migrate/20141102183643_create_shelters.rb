@@ -3,9 +3,7 @@ class CreateShelters < ActiveRecord::Migration
     create_table :shelters do |t|
       t.string :nombre
       t.string :usuario
-      t.string :email
       t.integer :telefono
-      t.string :password
       t.string :web
       t.text :requisitos_adopcion
       t.text :descripcion_asociacion

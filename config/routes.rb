@@ -1,5 +1,7 @@
 Mascota::Application.routes.draw do
  
+  devise_for :shelters, :module => "shelter"
+
 
   get 'admin', :to => "access#index"
 
