@@ -29,9 +29,11 @@ group :development do
   gem 'rails-erd'
   gem 'xray-rails'
 end
+#gem "bcrypt-ruby", "~> 3.1.5"
+#gem 'bcrypt', '~> 3.1.9'
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

@@ -51,13 +51,14 @@
     <%= f.label :necesidades_especiales %><br />
     <%= f.text_area :necesidades_especiales %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-   <span class="picture">
+  <span class="picture">
     <%= image_tag(@pet.picture_url) if @pet.picture? %>
     <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png'%>
   </span>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
 
 <% end %>
 <script type="text/javascript">

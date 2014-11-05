@@ -1,5 +1,20 @@
 Mascota::Application.routes.draw do
-  
+ 
+
+  get 'admin', :to => "access#index"
+
+  get "access/login"
+
+  get "access/logout"
+
+  post "access/attempt_login"
+
+
+  get "static_pages/home"
+
+  get "static_pages/help"
+
+  get "static_pages/care"
 
   resources :pet_sizes
 

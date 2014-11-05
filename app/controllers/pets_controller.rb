@@ -1,8 +1,18 @@
 class PetsController < ApplicationController
-
+  
+  before_filter :confirm_logged_in, :except => [:index, :show]
+  before_filter :find_shelter
+  
   def index
-    @pets = Pet.all
+  #  @pets = @shelter.Pet.all
+    if params[:shelter_id]
+        
+        @pets = Pet.where(:shelter_id => @shelter.id).en_adopcion
+    else
+        @pets = Pet.en_adopcion
+    end
 
+ 
   end
 
 
@@ -12,7 +22,7 @@ class PetsController < ApplicationController
   end
 
   def new
-    @pet = Pet.new
+    @pet = Pet.new({:shelter_id => @shelter.id})
     @pet_type = PetType.order('PetTypeName ASC')
     @hair_type = HairType.order('name ASC')
     @carer = Carer.order('nombre ASC')
@@ -38,7 +48,7 @@ class PetsController < ApplicationController
      
       if @pet.save
       
-      redirect_to action: "index", notice: 'Se ha creado la mascota.'
+      redirect_to(:action => "index", :shelter_id => @shelter.id)
    
       else
        @pet_type = PetType.order('PetTypeName ASC')
@@ -57,7 +67,7 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
 
       if @pet.update_attributes(params[:pet])
-        redirect_to action: "index", notice: 'Actualizado.'
+        redirect_to action: "index", :shelter_id => @shelter.id, notice: 'Actualizado.'
      
       else
         @pet_type = PetType.order('PetTypeName ASC')
@@ -76,8 +86,18 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
     @pet.destroy
 
-    redirect_to pets_url
+    redirect_to action: "index", :shelter_id => @shelter.id
 
    
   end
+
+  def find_shelter
+    if params[:shelter_id]
+      @shelter = Shelter.find(params[:shelter_id])
+    else
+
+    end
+  end
+
+
 end

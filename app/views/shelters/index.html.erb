@@ -23,6 +23,7 @@
     <td><%= shelter.calle %></td>
     <td><%= shelter.provincia %></td>
     <td><%= shelter.cp %></td>
+    <td><%= link_to 'Ver mascotas', {:controller => 'pets', :shelter_id => shelter.id}, :action => 'action show' %></td>
     <td><% link_to 'Show', shelter %></td>
     <td><%= link_to 'Editar', edit_shelter_path(shelter) %></td>
     <td><%= link_to 'Borrar', shelter, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
