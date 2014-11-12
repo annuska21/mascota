@@ -1,0 +1,38 @@
+<h1>Listado cuidadores</h1>
+<%= link_to 'Nuevo cuidador', new_admin_carer_path %>
+<table>
+  <tr>
+    <th>name</th>
+    <th>last_name</th>
+    <th>Email</th>
+    <th>phone</th>
+    <th>locate</th>
+    <th>street</th>
+    <th>province</th>
+    <th>postal_code</th>
+    <th>commentary</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @carers.each do |carer| %>
+  <tr>
+    <td><%= carer.name %></td>
+    <td><%= carer.last_name %></td>
+    <td><%= carer.email %></td>
+    <td><%= carer.phone %></td>
+    <td><%= carer.locate %></td>
+    <td><%= carer.street %></td>
+    <td><%= carer.province %></td>
+    <td><%= carer.postal_code %></td>
+    <td><%= carer.commentary %></td>
+    <td><%= link_to 'Editar', edit_admin_carer_path(carer) %></td>
+    <td><%= link_to 'Borrar', admin_carer_path(carer), method: :delete, data: { confirm: 'Estás seguro?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

@@ -17,7 +17,7 @@ class Admin::PetTypeColoursController < Admin::AdminController
   # GET /pet_type_colours/new.json
   def new
     @pet_type_colour = PetTypeColour.new
-    @pet_type = PetType.order('PetTypeName ASC')
+     #  @pet_type = PetType.order('name ASC')
 
 
   end
@@ -25,7 +25,7 @@ class Admin::PetTypeColoursController < Admin::AdminController
   # GET /pet_type_colours/1/edit
   def edit
     @pet_type_colour = PetTypeColour.find(params[:id])
-    @pet_type = PetType.order('PetTypeName ASC')
+   #    @pet_type = PetType.order('name ASC')
   end
 
   # POST /pet_type_colours
@@ -35,10 +35,10 @@ class Admin::PetTypeColoursController < Admin::AdminController
 
 
       if @pet_type_colour.save
-        redirect_to action: "index", notice: 'Color creado.'
+        redirect_to action: "index", notice: 'name creado.'
        
       else
-      @pet_type = PetType.order('PetTypeName ASC')
+      @pet_type = PetType.order('name ASC')
       render action: "new"
       
       end
@@ -52,10 +52,10 @@ class Admin::PetTypeColoursController < Admin::AdminController
 
 
       if @pet_type_colour.update_attributes(params[:pet_type_colour])
-        redirect_to action: "index", notice: 'Color actualizado.'
+        redirect_to action: "index", notice: 'name actualizado.'
   
       else
-        @pet_type = PetType.order('PetTypeName ASC')
+        @pet_type = PetType.order('name ASC')
         render action: "edit"
    
       end

@@ -1,0 +1,45 @@
+
+  <%= render :partial=>"layouts/errors_panel" , object: @carer %>
+
+  <div class="field">
+    <%= f.label(:name, "Nombre") %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label(:last_name, "Apellidos" )%><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label(:phone, "Telefono") %><br />
+    <%= f.number_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label(:locate, "Localizar por cuidador") %><br />
+    <%= f.check_box :locate %>
+  </div>
+  <div class="field">
+    <%= f.label(:shelter_id, "Refugio" )%><br />
+    <%= f.select(:shelter_id, @shelter.map {|s| [s.name, s.id]}) %>
+  </div>
+  <div class="field">
+    <%= f.label(:street, "Calle") %><br />
+    <%= f.text_field :street %>
+  </div>
+  <div class="field">
+    <%= f.label(:province, "Provincia") %><br />
+    <%= f.text_field :province %>
+  </div>
+  <div class="field">
+    <%= f.label(:postal_code, "Código postal") %><br />
+    <%= f.number_field :postal_code %>
+  </div>
+  <div class="field">
+    <%= f.label(:commentary, "Comentarios") %><br />
+    <%= f.text_area :commentary %>
+  </div>
+
+

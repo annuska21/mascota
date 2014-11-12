@@ -1,0 +1,77 @@
+<%= form_for(@shelter) do |f| %>
+    <%= render :partial=>"layouts/errors_panel" , object: @shelter %>
+
+  <div class="field">
+    <%= f.label(:name, "Nombre") %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label(:phone, "Telefono") %><br />
+    <%= f.number_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label(:password, "Contraseña") %><br />
+    <%= f.text_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label(:web, "Página web") %><br />
+    <%= f.text_field :web %>
+  </div>
+  <div class="field">
+    <%= f.label(:adoption_requirement, "Requisitos de adopción") %><br />
+    <%= f.text_area :adoption_requirement %>
+  </div>
+  <div class="field">
+    <%= f.label(:shelter_description, "Descripción del refugio") %><br />
+    <%= f.text_area :shelter_description %>
+  </div>
+  <div class="field">
+    <%= f.label(:carer_possibility, "Posibilidad de acogida") %><br />
+    <%= f.check_box :carer_possibility %>
+  </div>
+  <div class="field">
+    <%= f.label(:carer_detail, "Detalles de acogida") %><br />
+    <%= f.text_area :carer_detail %>
+  </div>
+  <div class="field">
+    <%= f.label(:donation_information, "Información para donaciones") %><br />
+    <%= f.text_area :donation_information %>
+  </div>
+  <div class="field">
+    <%= f.label(:voluntary, "Se buscan voluntarios") %><br />
+    <%= f.check_box :voluntary %>
+  </div>
+  <div class="field">
+    <%= f.label(:voluntary_detail, "Detalles voluntariado") %><br />
+    <%= f.text_area :voluntary_detail %>
+  </div>
+  <div class="field">
+    <%= f.label(:street, "Calle") %><br />
+    <%= f.text_field :street %>
+  </div>
+    <div class="field">
+    <%= f.label(:postal_code, "Código postal") %><br />
+    <%= f.text_field :postal_code %>
+  </div>
+    <div class="field">
+    <%= f.label(:province, "Provincia") %><br />
+    <%= f.text_field :province %>
+  </div>
+    <div class="latitud">
+    <%= f.label(:latitude, "latitud") %><br />
+    <%= f.text_field :latitude %>
+  </div>
+      <div class="longitud">
+    <%= f.label(:longitude, "longitud") %><br />
+    <%= f.text_field :longitude %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

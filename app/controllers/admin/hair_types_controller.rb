@@ -7,15 +7,7 @@ class Admin::HairTypesController < Admin::AdminController
 
   end
 
-  # GET /hair_types/1
-  # GET /hair_types/1.json
-  def show
-    @hair_type = HairType.find(params[:id])
-
-  end
-
-  # GET /hair_types/new
-  # GET /hair_types/new.json
+ 
   def new
     @hair_type = HairType.new
 

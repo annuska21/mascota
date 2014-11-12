@@ -12,6 +12,10 @@ class HairType < ActiveRecord::Base
   has_many :pets
   attr_accessible :name
 
+  def self.options_for_select
+    order('LOWER(name)').map { |e| [e.name, e.id] }
+  end 
+  
   validates :name, :presence=>true
 
 end

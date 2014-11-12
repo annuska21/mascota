@@ -1,0 +1,13 @@
+<h1>Editar refugio</h1>
+
+  <%= form_for(@shelter, url: admin_shelter_path(@shelter)) do |f| %>
+
+    <%= render(:partial  => "form", :locals => {:f => f}) %>
+
+    <div class="form-buttons">
+    <%= submit_tag("Actualizar datos") %>
+
+    </div>
+<% end %>
+
+<%= link_to 'Volver', admin_shelters_path %>

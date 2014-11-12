@@ -1,0 +1,29 @@
+<h1>Listado de mascotas</h1>
+<%= link_to 'volver', list_shelters_path %>
+<table>
+  <tr>
+   
+    <th></th>
+
+    <th>Raza</th>
+    <th>Mascota</th>
+    <th>name</th>
+    <th>Fecha nacimiento</th>
+    <th>Tamaño</th>
+    <th>Color</th>
+    <th></th>
+  </tr>
+
+    <% @pets.each do |pet| %>
+  <tr>
+    <td><%= image_tag(pet.picture_url, :size => '150x150', :alt => 'imagen') if pet.picture? %></td>
+    <td><%= pet.pet_type_breed.name %></td>
+    <td><%= pet.pet_type.name %></td>
+    <td><%= pet.name %></td>
+    <td><%= pet.birthday %></td>
+    <td><%= pet.pet_size.name %></td>
+    <td><%= pet.pet_type_colour.name %></td>
+  
+  </tr>
+<% end %>
+</table>

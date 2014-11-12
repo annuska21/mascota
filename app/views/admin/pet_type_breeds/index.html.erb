@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th>Raza</th>
+    <th>name</th>
     <th>Tipo de mascota</th>
     <th></th>
     <th></th>
@@ -11,15 +11,14 @@
 
 <% @pet_type_breeds.each do |pet_type_breed| %>
   <tr>
-    <td><%= pet_type_breed.raza %></td>
-    <td><%= pet_type_breed.pet_type.PetTypeName %></td>
-    <td><% link_to 'Show', admin_pet_type_breed_path(pet_type_breed) %></td>
-    <td><%= link_to 'Editar', edit_admin_pet_type_breed_path(pet_type_breed) %></td>
-    <td><%= link_to 'Borrar', admin_pet_type_breed_path(pet_type_breed), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= pet_type_breed.name %></td>
+    <td><%= pet_type_breed.pet_type.name %></td>
+    <td><%= link_to 'Editar', edit_pet_type_breed_path(pet_type_breed) %></td>
+    <td><%= link_to 'Borrar', pet_type_breed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'Nueva raza', new_admin_pet_type_breed_path %>
+<%= link_to 'Nueva name', new_pet_type_breed_path %>

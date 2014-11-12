@@ -1,8 +1,8 @@
-<h1>Listado estados</h1>
+<h1>Listado names</h1>
 
 <table>
   <tr>
-    <th>Estado</th>
+    <th>name</th>
     <th></th>
     <th></th>
     <th></th>
@@ -10,7 +10,7 @@
 
 <% @pet_statuses.each do |pet_status| %>
   <tr>
-    <td><%= pet_status.estado %></td>
+    <td><%= pet_status.name %></td>
     <td><% link_to 'Show', pet_status %></td>
     <td><%= link_to 'Editar', edit_pet_status_path(pet_status) %></td>
     <td><%= link_to 'Borrar', pet_status, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
@@ -20,4 +20,4 @@
 
 <br />
 
-<%= link_to 'Nuevo estado', new_pet_status_path %>
+<%= link_to 'Nuevo name', new_pet_status_path %>

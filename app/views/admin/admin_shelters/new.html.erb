@@ -1,0 +1,15 @@
+<h1>Nuevo refugio</h1>
+
+
+  <h2>Crear nueva asociacion</h2>
+
+  <%= form_for(:shelter, :url => {:action=>'create'}) do |f| %>
+  <%= render(:partial  => "form", :locals => {:f => f}) %>
+
+<div class="form-buttons">
+<%= submit_tag("Alta") %>
+
+</div>
+<% end %>
+
+<%= link_to 'Volver', admin_shelters_path %>

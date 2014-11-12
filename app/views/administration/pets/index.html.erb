@@ -1,0 +1,60 @@
+<h1>Listado de mascotas</h1>
+<%= link_to 'Nueva mascota', new_shelter_pet_path(:current_shelter_id => @shelter.id) %>
+
+
+<div class="filter_options_container">
+
+  <form class="filter_form">
+    <%= select("pet_status", "name", PetStatus.all.collect(&:name)) %>
+    <input type="submit" value="Filter" />
+  </form>
+</div>
+
+<%= form_tag shelter_pets_path, :method => 'get' do %>  
+ 
+  <p>  
+    <%= text_field_tag :search, params[:search] %>  
+    <%= submit_tag "Buscar por nombre", :name => nil %>  
+  </p>  
+<% end %>  
+
+<table>
+  <tr>
+
+    <th></th>
+    <th>Raza</th>
+    <th>Mascota</th>
+    <th>Nombre</th>
+    <th>Refugio</th>
+    <th>Fecha nacimiento</th>
+    <th>Cuidador</th>
+    <th>Estado nombre</th>
+     <th>Tamaño</th>
+
+    <th></th>
+  </tr>
+
+    <% @pets.each do |pet| %>
+  <tr>
+    <td><%= image_tag(pet.picture_url, :size => '150x150', :alt => 'imagen') if pet.picture? %></td>
+    <td><%= pet.pet_type_breed.name %></td>
+    <td><%= pet.pet_type.name %></td>
+    <td><%= pet.name %></td>
+    <td><%= pet.shelter.name %></td>   
+    <td><%= pet.birthday %></td> 
+    <td><%= pet.carer.name if pet.carer %></td>
+     <td><%= pet.pet_status.name %></td> 
+    <td><%= pet.pet_size.name %></td>
+    
+   <td><%= link_to 'Editar', {:action => 'edit', :id => pet.id, :current_shelter_id => @shelter.id} %></td>
+    
+
+  </tr>
+<% end %>
+</table>
+<div class="apple_pagination">
+      <%= will_paginate @pets, :container => false %>
+  </div>
+<br />
+
+

@@ -2,45 +2,58 @@ Mascota::Application.routes.draw do
  
   devise_for :shelters
 
-  get "access/login"
+  #get "access/login"
 
-  get "access/logout"
+  #get "access/logout"
 
-  post "access/attempt_login"
-
-
+  #post "access/attempt_login"
 
 
-  get "static_pages/home"
+  match "/home" => "StaticPages#home" 
 
   get "static_pages/help"
 
-  get "static_pages/care"
-
-  get "static_pages/shelters"
 
 
+  match "/cuidados" => "StaticPages#care" 
 
-  resources :pets
+  #get "static_pages/shelters"
 
-  scope :module => 'shelter' do
-    resources :shelters do
-      resources :pets
+  #get "static_pages/shelters_show"
 
+  resources :list_pets do
+    get :reset_filterrific, on: :collection
+  end
+  
+  resources :list_shelters do
+    collection do
+    get 'listed'
     end
   end
 
 
-  resources :carers
+   scope :module => 'administration' do
+    resources :shelters do
+      resources :pets
+      resources :carers
+    end
+  
+  end
 
 
-  namespace  :admin do
+
+  
+
+  scope :module => 'admin' do
     resources :pet_type_colours
     resources :pet_sizes
     resources :pet_type_breeds
     resources :pet_types
     resources :pet_statuses
     resources :hair_types
+    resources :admin_shelters
+    resources :admin_pets
+    resources :admin_carers
   end
 
 

@@ -2,16 +2,13 @@
   <%= render :partial=>"layouts/errors_panel" , object: @pet_type_colour %>
 
   <div class="field">
-    <%= f.label :color %><br />
-    <%= f.text_field :color %>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
   </div>
-    <div class="field">
-    <%= f.label(:pet_type_id, "Tipo de mascota") %><br />
-    <%= f.select(:pet_type_id, @pet_type.map {|s| [s.PetTypeName, s.id]}) %>
-  </div>
+    
   <div class="field">
-    <%= f.label :descripcion %><br />
-    <%= f.text_area :descripcion %>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
   </div>
   <div class="actions">
     <%= f.submit %>

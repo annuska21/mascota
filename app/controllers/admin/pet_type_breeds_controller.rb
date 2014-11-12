@@ -12,14 +12,14 @@ class Admin::PetTypeBreedsController < Admin::AdminController
 
   def new
     @pet_type_breed = PetTypeBreed.new
-    @pet_type = PetType.order('PetTypeName ASC')
+    @pet_type = PetType.order('name ASC')
 
   end
 
 
   def edit
     @pet_type_breed = PetTypeBreed.find(params[:id])
-    @pet_type = PetType.order('PetTypeName ASC')
+    @pet_type = PetType.order('name ASC')
   end
 
 
@@ -31,7 +31,7 @@ class Admin::PetTypeBreedsController < Admin::AdminController
         redirect_to action: "index", notice: 'El tipo de mascota se ha creado.'
         
       else
-        @pet_type = PetType.order('PetTypeName ASC')
+        @pet_type = PetType.order('name ASC')
         render action: "new"
         
       end
@@ -45,7 +45,7 @@ class Admin::PetTypeBreedsController < Admin::AdminController
         redirect_to action: "index", notice: 'El tipo de mascota se ha actualizado.'
         
       else
-        @pet_type = PetType.order('PetTypeName ASC')
+        @pet_type = PetType.order('name ASC')
         render action: "edit"
 
       end

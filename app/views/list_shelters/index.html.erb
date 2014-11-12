@@ -1,0 +1,42 @@
+
+
+  
+<%= form_tag list_shelters_path, :method => :get do %>  
+  <p>  
+    <%= text_field_tag :search, params[:search] %>  
+    <%= submit_tag "Buscar cerca de..", :name => nil %>  
+<% end %>  
+<!-- rest of page -->  
+<h1>Listado Refugios</h1>
+
+<table>
+  <tr>
+    <th>name</th>
+    <th>Número de mascotas</th>
+    <th>Posibilidad de acoger</th>
+    <th>Voluntariado</th>
+    <th>Provincia</th>
+    <th>código postal</th>
+    <th></th>
+
+  </tr>
+
+<% @shelters.each do |shelter| %>
+  <tr>
+    <td><%= shelter.name %></td>
+    <td><%= shelter.pets.en_adopcion.size %></td>
+    <td><%= status_tag(shelter.carer_possibility) %></td>
+    <td><%= status_tag(shelter.voluntary) %></td>
+    <td><%= shelter.province %></td>
+     <td><%= shelter.postal_code %></td>
+    <td><%= link_to 'Ver mascotas', {:action => "listed", :shelter_id => shelter.id} %></td>
+    <td><%= link_to 'Detalles', list_shelter_path(shelter) %></td>
+  </tr>
+<% end %>
+</table>
+<div class="apple_pagination">
+      <%= will_paginate @shelters, :container => false %>
+  </div>
+<br />
+
+

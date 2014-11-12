@@ -1,0 +1,12 @@
+<h1>Alta cuidador</h1>
+  <%= link_to 'Volver', admin_carers_path %>
+  <%= form_for(@carer, :url => {:action=>'create'}) do |f| %>
+  <%= render(:partial  => "form", :locals => {:f => f}) %>
+
+<div class="form-buttons">
+<%= submit_tag("Alta") %>
+
+</div>
+<% end %>
+
+

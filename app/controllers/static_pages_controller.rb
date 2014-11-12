@@ -8,9 +8,7 @@ class StaticPagesController < ApplicationController
   def care
   end
 
-  def shelters
-    @shelters = Shelter.all
-  end
+
 
 
 end

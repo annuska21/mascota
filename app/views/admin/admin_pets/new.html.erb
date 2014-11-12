@@ -1,0 +1,14 @@
+<h1>Alta mascota</h1>
+
+
+  <%= form_for(:pet, :url => {:action=>'create'}) do |f| %>
+  <%= render(:partial  => "form", :locals => {:f => f}) %>
+
+<div class="form-buttons">
+<%= submit_tag("Alta") %>
+
+</div>
+<% end %>
+
+
+<%= link_to 'Volver', admin_pets_path %>

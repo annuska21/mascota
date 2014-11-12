@@ -1,0 +1,12 @@
+<h1>Listado Refugios</h1>
+    <ul>
+    <li><%= link_to 'Ver mascotas', shelter_pets_path(current_shelter.id) %></li>
+     <li><%= link_to 'Ver cuidadores', shelter_carers_path(current_shelter.id) %></li>
+     <li><%= link_to 'Editar', edit_shelter_path(current_shelter.id) %></li>
+    </ul>
+<ul>
+<li>Mascotas en el refugio: <%= @pet_in_shelter.size %></li>
+<li>Mascotas Acogidas: <%= @pet_with_carer.size %></li>
+<li>Mascotas en adopción: <%= @pet_to_adopted.size %></li>
+<li>Mascotas Adoptadas: <%= @pet_adopted.size %></li>
+</ul>

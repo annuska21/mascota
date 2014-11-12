@@ -9,6 +9,10 @@ gem 'rails', '3.2.19'
 
 gem 'mysql2'
 gem 'devise'
+gem 'will_paginate', '~> 3.0.5'
+gem 'geocoder'
+gem 'bootstrap-sass',       '3.2.0.0'
+gem 'filterrific'
 
 # Gems used only for assets and not required
 # in production environments by default.

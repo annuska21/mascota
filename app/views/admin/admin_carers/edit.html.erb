@@ -1,0 +1,12 @@
+<h1>Editar cuidador</h1>
+
+<%= link_to 'Volver', admin_carers_path %>
+
+  <%= form_for(@carer, url: admin_carer_path(@carer)) do |f| %>
+
+    <%= render(:partial  => "form", :locals => {:f => f}) %>
+
+    <div class="form-buttons">
+    <%= submit_tag("Actualizar datos") %>
+    </div>
+<% end %>

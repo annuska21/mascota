@@ -1,0 +1,53 @@
+
+
+<p id="notice"><%= notice %></p>
+<%= link_to 'Back', list_pets_path %>
+<%= image_tag(@pet.picture_url) if @pet.picture? %>
+
+<p>
+  <b>Nombre</b>
+  <%= @pet.name %>
+</p>
+
+<p>
+  <b>Tamaño:</b>
+  <%= @pet.pet_size.name %>
+</p>
+
+<p>
+  <b>Raza:</b>
+  <%= @pet.pet_type_breed.name %>
+</p>
+
+<p>
+  <b>Color:</b>
+  <%= @pet.pet_type_colour.name %>
+</p>
+
+
+<p>
+  <b>Refugio:</b>
+  <%= @pet.shelter.name %>
+</p>
+
+<p>
+  <b>Fecha nacimiento:</b>
+  <%= @pet.birthday %>
+</p>
+<p>
+  <b>Tipo de pelo:</b>
+  <%= @pet.hair_type.name %>
+</p>
+<p>
+  <b>Comentarios:</b>
+  <%= @pet.commentary %>
+</p>
+
+<p>
+  <b>Necesidades especiales:</b>
+  <%= @pet.special_need %>
+</p>
+
+
+
+

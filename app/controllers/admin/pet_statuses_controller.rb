@@ -32,7 +32,7 @@ class Admin::PetStatusesController < Admin::AdminController
     @pet_status = PetStatus.new(params[:pet_status])
 
       if @pet_status.save
-        redirect_to action: "index", notice: 'El estado se ha creado.'
+        redirect_to action: "index", notice: 'El name se ha creado.'
   
       else
        render action: "new"
@@ -48,7 +48,7 @@ class Admin::PetStatusesController < Admin::AdminController
 
 
       if @pet_status.update_attributes(params[:pet_status])
-        redirect_to action: "index", notice: 'El estado se ha actualizado.'
+        redirect_to action: "index", notice: 'El name se ha actualizado.'
    
       else
         render action: "edit"

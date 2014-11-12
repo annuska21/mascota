@@ -1,0 +1,62 @@
+
+  <%= render :partial=>"layouts/errors_panel" , object: @pet %>
+
+  <div class="field">
+    <%= f.label(:name, "Nombre") %><br />
+    <%= f.text_field :name %>
+  </div>
+   <div class="field">
+    <%= f.label(:gender, "sexo") %><br />
+    <%= f.select :gender,  Pet::GENDER_TYPES %>
+  </div>
+  <div class="field">
+    <%= f.label(:birthday, "Nacimiento") %><br />   
+    <%= f.date_select(:birthday, options={:start_year=>Time.now.year-12, :end_year=>Time.now.year+0, :use_short_month => true, :discard_day => true }) %>
+  </div>
+  <div class="field">
+    <%= f.label(:pet_status_id, "Estado") %><br />
+    <%= f.select(:pet_status_id, @pet_status.map {|s| [s.name, s.id]}) %>
+  </div>
+  <div class="field">
+    <%= f.label(:pet_size_id, "Tamaño") %><br />
+     <%= f.select(:pet_size_id, @pet_size.map {|s| [s.name, s.id]}) %>
+
+  </div>
+  <div class="field">
+    <%= f.label(:pet_type_breed_id, "Raza") %><br />
+     <%= f.select(:pet_type_breed_id, @pet_type_breed.map {|s| [s.name, s.id]}) %>
+  </div>
+  <div class="field">
+    <%= f.label(:pet_type_colour_id, "Color") %><br />
+     <%= f.select(:pet_type_colour_id, @pet_type_colour.map {|s| [s.name, s.id]}) %>
+  </div>
+   <div class="field">
+    <%= f.label(:carer_id, "Cuidador") %><br />
+    <%= f.select(:carer_id, @carer.map {|s| [s.name, s.id]}) %>
+  </div>
+    <div class="field">
+    <%= f.label(:hair_type_id, "Tipo de pelo") %><br />
+    <%= f.select(:hair_type_id, @hair_type.map {|s| [s.name, s.id]}) %>
+  </div>
+  <div class="field">
+    <%= f.label(:commentary, "Comentarios") %><br />
+    <%= f.text_area :commentary %>
+  </div>
+  <div class="field">
+    <%= f.label(:special_need, "Necesidades especiales") %><br />
+    <%= f.text_area :special_need %>
+  </div>
+  
+  <span class="picture">
+    <%= image_tag(@pet.picture_url) if @pet.picture? %>
+    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png'%>
+  </span>
+
+<script type="text/javascript">
+  $('#pet_picture').bind('change', function() {
+    size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert('El tamaño máximo para la imagen es de 5MB. Por favor, selecciona una imagen más pequeña.');
+    }
+  });
+</script>

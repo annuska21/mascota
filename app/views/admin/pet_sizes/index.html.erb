@@ -10,7 +10,7 @@
 
 <% @pet_sizes.each do |pet_size| %>
   <tr>
-    <td><%= pet_size.pet_size %></td>
+    <td><%= pet_size.name %></td>
     <td><% link_to 'Show', pet_size %></td>
     <td><%= link_to 'Editar', edit_pet_size_path(pet_size) %></td>
     <td><%= link_to 'Borrar', pet_size, method: :delete, data: { confirm: 'Estás seguro?' } %></td>

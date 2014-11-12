@@ -1,0 +1,46 @@
+<h1>Listado cuidadores</h1>
+<%= link_to 'Nuevo cuidador', new_shelter_carer_path(@shelter) %>
+
+<%= form_tag shelter_carers_path, :method => 'get' do %>   
+  <p>  
+    <%= text_field_tag :search, params[:search] %>  
+    <%= submit_tag "Buscar por nombre", :name => nil %>  
+  </p>  
+<% end %>  
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Apellidos</th>
+    <th>Email</th>
+    <th>Teléfoo</th>
+    <th>Localizar por cuidador</th>
+    <th>Calle</th>
+    <th>Provincia</th>
+    <th>Código postal</th>
+
+
+    <th>Ver</th>
+
+  </tr>
+
+<% @carers.each do |carer| %>
+  <tr>
+    <td><%= carer.name %></td>
+    <td><%= carer.last_name %></td>
+    <td><%= carer.email %></td>
+    <td><%= carer.phone %></td>
+    <td><%= carer.locate %></td>
+    <td><%= carer.street %></td>
+    <td><%= carer.province %></td>
+    <td><%= carer.postal_code %></td>
+     <td><%= link_to 'Editar', {:action => 'edit', :id => carer.id, :current_shelter_id => @shelter.id} %></td>
+    
+  </tr>
+<% end %>
+</table>
+<div class="apple_pagination">
+      <%= will_paginate @carers, :container => false %>
+  </div>
+<br />
+
+
