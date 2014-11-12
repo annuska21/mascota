@@ -45,12 +45,12 @@ PetTypeColour.create(:name=>"azul")
 PetTypeColour.create(:name=>"blanco")
 
 Shelter.delete_all
-Shelter.create(:name=>'prueba', :password=>'123456', :email=>'test@test.com')
-Shelter.create(:name=>'prueba1',:password=>'123456', :email=>'test1@test.com')
-Shelter.create(:name=>'prueba2',:password=>'123456', :email=>'test2@test.com')
+shelter1=Shelter.create(:name=>'prueba', :password=>'123456', :email=>'test@test.com', :province=>"Madrid")
+Shelter.create(:name=>'prueba1',:password=>'123456', :email=>'test1@test.com', :province=>"Barcelona")
+Shelter.create(:name=>'prueba2',:password=>'123456', :email=>'test2@test.com', :province=>"Madrid")
 
-
-
+shelter1.carers.build(:name=>"career1", :locate=>true, :province=>"Valencia")
+shelter1.save
 
 Pet.delete_all
 Pet.create(

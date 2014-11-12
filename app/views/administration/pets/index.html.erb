@@ -5,7 +5,8 @@
 <div class="filter_options_container">
 
   <form class="filter_form">
-    <%= select("pet_status", "name", PetStatus.all.collect(&:name)) %>
+    <%= select("pet_status", "name", PetStatus.all.collect(&:name),
+      { include_blank: '- Any -' } ) %>
     <input type="submit" value="Filter" />
   </form>
 </div>

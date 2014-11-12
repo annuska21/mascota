@@ -5,15 +5,17 @@
     Search
     <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
   </div>
+
   <div>
-      Estado
+    Province
     <%= f.select(
-      :with_pet_status_id,
-      @filterrific.select_options[:with_pet_status_id],
+      :with_province, 
+      @filterrific.select_options[:with_province],
       { include_blank: '- Any -' }
     ) %>
  
   </div>
+
   <div>
     Refugio
     <%= f.select(
@@ -23,6 +25,7 @@
     ) %>
  
   </div>
+
    <div>
     Tamaño
     <%= f.select(

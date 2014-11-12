@@ -30,8 +30,8 @@ class Pet < ActiveRecord::Base
     :with_pet_type_breed_id,
     :with_hair_type_id,
     :with_carer_id,
-    :with_pet_status_id,
-    :with_pet_type_ids
+    :with_pet_type_ids,
+    :with_province
   ])
 
 
@@ -49,8 +49,8 @@ class Pet < ActiveRecord::Base
   scope :adoptada, lambda { where(:pet_status_id => PetStatus.all[1]) }
   scope :acogida, lambda { where(:pet_status_id => PetStatus.all[2]) }
   scope :baja, lambda { where(:pet_status_id => PetStatus.all[3]) }
-  scope :en_adopcion, Pet.refugio | Pet.acogida
-
+  scope :en_adopcion, lambda { where("pet_status_id = ? or pet_status_id = ?",PetStatus.all[0],PetStatus.all[2]) }
+ 
   scope :sorted, lambda { order("pets.name ASC") }
 
   scope :with_pet_size_id, lambda { |pet_size_ids|
@@ -60,9 +60,7 @@ class Pet < ActiveRecord::Base
   scope :with_hair_type_id, lambda { |hair_type_ids|
     where(:hair_type_id => [*hair_type_ids])
   }
-      scope :with_pet_status_id, lambda { |pet_status_ids|
-     where(:pet_status_id => [*pet_status_ids])
-  }
+      
   #where(:pet_status_id => 0) | where(:pet_status_id => 2)
     scope :with_pet_type_colour_id, lambda { |pet_type_colour_ids|
      where(:pet_type_colour_id => [*pet_type_colour_ids])
@@ -73,26 +71,26 @@ class Pet < ActiveRecord::Base
   scope :with_shelter_id, lambda { |shelter_ids|
     where(:shelter_id => [*shelter_ids])
   }
+
+
   scope :with_carer_id, lambda { |carer_ids|
    where(:carer_id => [*carer_ids])
   }
- 
+
+  def self.with_province province
+    pets=[]
+    Pet.all.each do |pet|
+      if pet.province == province
+        pets<<pet
+      end
+    end
+    return where(:id => pets)
+  end
 
   scope :with_pet_type_ids, lambda{ |pet_type_ids|
-  # get a reference to the join table
- # role_assignments = RoleAssignment.arel_table
-  pet_type_breeds = PetTypeBreed.arel_table
-  # get a reference to the filtered table
-  #students = Student.arel_table
-  pets = Pet.arel_table
-  # let AREL generate a complex SQL query
-  where(
-    PetTypeBreed \
-      .where(pet_type_breeds[:pet_id].eq(pets[:id])) \
-      .where(pet_type_breeds[:pet_type_id].in([*pet_type_ids].map(&:to_i))) \
-      .exists
-  )
-}
+    joins(:pet_type).where("pet_types.id in (?)", pet_type_ids)
+  }
+
   self.per_page = 10
 
   attr_accessible :gender, :pet_type_breed_id, :pet_type_colour_id, :picture, :carer_id, :commentary, :birthday, :hair_type_id, :special_need, :name, :pet_size_id, :pet_status_id, :shelter_id
@@ -104,12 +102,22 @@ class Pet < ActiveRecord::Base
   GENDER_TYPES = ["Desconocido", "Hembra", "Macho"]
 
   def self.search(search)  
-      if search  
-        where('name LIKE ?', "%#{search}%")  
-      else  
-        scoped  
-      end  
+    if search  
+      where('name LIKE ?', "%#{search}%")  
+    else  
+      scoped  
     end  
+  end  
+
+
+  def province
+
+    if !self.carer.blank? && self.carer.locate
+      self.carer.province
+    else
+     self.shelter.province
+    end
+  end
 
   private
 

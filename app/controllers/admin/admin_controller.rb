@@ -1,7 +1,7 @@
 class Admin::AdminController < ApplicationController
 
 
-  before_filter :confirm_admin
+  before_filter :confirm_admin 
 
   def confirm_admin
     

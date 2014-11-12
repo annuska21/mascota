@@ -11,9 +11,6 @@
 class PetStatus < ActiveRecord::Base
   has_many :pets
   
-  def self.options_for_select
-   order('LOWER(name)').map { |e| [e.name, e.id] }
-  end
 
   attr_accessible :name
 end

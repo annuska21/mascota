@@ -22,6 +22,8 @@ GEM
       activesupport (= 3.2.19)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
+    activerecord-postgresql-adapter (0.0.1)
+      pg
     activeresource (3.2.19)
       activemodel (= 3.2.19)
       activesupport (= 3.2.19)
@@ -81,6 +83,7 @@ GEM
     multi_json (1.10.1)
     mysql2 (0.3.16)
     orm_adapter (0.5.0)
+    pg (0.17.1)
     polyglot (0.3.5)
     rack (1.4.5)
     rack-cache (1.2)
@@ -145,6 +148,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-postgresql-adapter
   annotate
   bootstrap-sass (= 3.2.0.0)
   byebug
