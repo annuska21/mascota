@@ -41,6 +41,7 @@ end
 group :production do
 
   gem 'activerecord-postgresql-adapter'
+  gem 'pg'
 end
 #gem "bcrypt-ruby", "~> 3.1.5"
 #gem 'bcrypt', '~> 3.1.9'
