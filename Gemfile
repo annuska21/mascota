@@ -9,7 +9,6 @@ gem 'heroku'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
-gem 'activerecord-postgresql-adapter'
 
 gem 'devise'
 gem 'will_paginate', '~> 3.0.5'
@@ -37,6 +36,11 @@ group :development do
   gem 'annotate'
   gem 'rails-erd'
   gem 'xray-rails'
+end
+
+group :production do
+
+  gem 'activerecord-postgresql-adapter'
 end
 #gem "bcrypt-ruby", "~> 3.1.5"
 #gem 'bcrypt', '~> 3.1.9'
