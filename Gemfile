@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 ruby '2.1.2'
 
 gem 'rails', '3.2.19'
-gem 'heroku'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -40,11 +39,6 @@ group :development do
   gem 'xray-rails'
 end
 
-group :production do
-
-  gem 'activerecord-postgresql-adapter'
-  gem 'pg'
-end
 #gem "bcrypt-ruby", "~> 3.1.5"
 #gem 'bcrypt', '~> 3.1.9'
 
