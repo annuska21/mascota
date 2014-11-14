@@ -34,6 +34,7 @@ class Pet < ActiveRecord::Base
     :with_province
   ])
 
+  attr_accessible :gender, :pet_type_breed_id, :pet_type_colour_id, :picture, :carer_id, :commentary, :birthday, :hair_type_id, :special_need, :name, :pet_size_id, :pet_status_id, :shelter_id
 
 
   belongs_to :hair_type
@@ -91,9 +92,9 @@ class Pet < ActiveRecord::Base
     joins(:pet_type).where("pet_types.id in (?)", pet_type_ids)
   }
 
-  self.per_page = 10
+  self.per_page = 6
 
-  attr_accessible :gender, :pet_type_breed_id, :pet_type_colour_id, :picture, :carer_id, :commentary, :birthday, :hair_type_id, :special_need, :name, :pet_size_id, :pet_status_id, :shelter_id
+
 
  mount_uploader :picture, PictureUploader
 
@@ -119,6 +120,21 @@ class Pet < ActiveRecord::Base
     end
   end
 
+def age
+    unless birthday.nil?
+      years = Date.today.year - birthday.year
+      if Date.today.month < birthday.month
+           years = years + 1
+      end
+      if (Date.today.month == birthday.month and
+          Date.today.day < birthday.day)
+               years = years - 1
+      end
+     return years
+    end
+    nil
+end
+
   private
 
     def picture_size
@@ -126,6 +142,5 @@ class Pet < ActiveRecord::Base
         errors.add(:picture, "should be less than 5MB")
       end
     end
-
 
 end

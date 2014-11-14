@@ -1,8 +1,8 @@
 class Administration::CarersController < Administration::AdministrationController
-
   before_filter :find_shelter
-
+  
   def index
+    @shelter = current_shelter
     @carers = @shelter.carers.search(params[:search]).sorted.paginate(:page => params[:page])
 
 
@@ -10,17 +10,18 @@ class Administration::CarersController < Administration::AdministrationControlle
 
 
   def new
-    #@carer = Carer.new()
+    @shelter = current_shelter
     @carer = @shelter.carers.build
   end
 
 
   def edit
+   
     @carer = Carer.find(params[:id])
   end
 
   def create
-    #@carer = Carer.new(params[:carer])
+    @shelter = current_shelter
     @carer = @shelter.carers.new(params[:carer])
 
       if @carer.save

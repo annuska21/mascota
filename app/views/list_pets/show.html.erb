@@ -1,52 +1,72 @@
 
 
 <p id="notice"><%= notice %></p>
-<%= link_to 'Back', list_pets_path %>
-<%= image_tag(@pet.picture_url) if @pet.picture? %>
 
-<p>
-  <b>Nombre</b>
-  <%= @pet.name %>
-</p>
+<div class="row">
+  <div class="col-lg-5 col-md-5">
+    <div class="imagen">
+      <%= image_tag(@pet.picture_url) if @pet.picture? %>
+    </div>
+  </div>
 
-<p>
-  <b>Tamaño:</b>
-  <%= @pet.pet_size.name %>
-</p>
+   <div class="col-lg-7 col-md-7">
+    <%= link_to '<< Volver al listado', list_pets_path, :class=>"enlaces" %>
+     <div class="info">
+      <p>
+        <b>Nombre</b>
+        <%= @pet.name %>
+      </p>
 
-<p>
-  <b>Raza:</b>
-  <%= @pet.pet_type_breed.name %>
-</p>
+      <p>
+        <b>Tamaño:</b>
+        <%= @pet.pet_size.name %>
+      </p>
 
-<p>
-  <b>Color:</b>
-  <%= @pet.pet_type_colour.name %>
-</p>
+      <p>
+        <b>Raza:</b>
+        <%= @pet.pet_type_breed.name %>
+      </p>
+
+      <p>
+        <b>Color:</b>
+        <%= @pet.pet_type_colour.name %>
+      </p>
+
+      <p>
+        <b>Años:</b>
+        <%= @pet.age %>
+      </p>
+
+      <p>
+        <b>Comentarios:</b>
+        <%= @pet.commentary %>
+      </p>
+
+      <p>
+        <b>Necesidades especiales:</b>
+        <%= @pet.special_need %>
+      </p>
+      <p>
+      <b>Refugio:</b>
+        <%= @pet.shelter.name %>
+      </p>
+      <p>
+      <b>Contacto:</b>
+        <%= @pet.shelter.email %>
+        |
+        <%= @pet.shelter.phone if @pet.shelter.phone? %>
+      </p>
+      <p>
+        <b>Requisitos de adopción:</b>
+        <%= @pet.shelter.adoption_requirement %>
+      </p>
+    </div>
+   </div>
 
 
-<p>
-  <b>Refugio:</b>
-  <%= @pet.shelter.name %>
-</p>
+</div>
 
-<p>
-  <b>Fecha nacimiento:</b>
-  <%= @pet.birthday %>
-</p>
-<p>
-  <b>Tipo de pelo:</b>
-  <%= @pet.hair_type.name %>
-</p>
-<p>
-  <b>Comentarios:</b>
-  <%= @pet.commentary %>
-</p>
 
-<p>
-  <b>Necesidades especiales:</b>
-  <%= @pet.special_need %>
-</p>
 
 
 

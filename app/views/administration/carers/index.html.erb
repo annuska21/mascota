@@ -1,25 +1,40 @@
-<h1>Listado cuidadores</h1>
-<%= link_to 'Nuevo cuidador', new_shelter_carer_path(@shelter) %>
+<div class="row">
+  <div class="col-lg-2 col-md-2">
+   <%= render 'layouts/nav_administracion' %>
+  </div>
+  <div class="col-lg-10 col-md-10">   
+    <div class="row">
+      <div class="col-lg-6 col-md-6">
+       <%= link_to('Nuevo cuidador', new_shelter_carer_path(@shelter), {:class=>"btn btn-primary"}) %>
+      </div>
+      <div class="col-lg-6 col-md-6">
+        <%= form_tag shelter_carers_path, :method => 'get' do %>  
+          <div class="row">
+            <div class="col-lg-6 col-md-6">
+              <%= text_field_tag(:search, params[:search], {:class=>"form-control"}) %> 
+            </div>
+            <div class="col-lg-6 col-md-6">
+              <%= submit_tag "Buscar por nombre", :name => nil, :class=>"btn btn-info" %>  
+            </div>
+          </div>                           
+        <% end %>  
+      </div>
+    </div>
 
-<%= form_tag shelter_carers_path, :method => 'get' do %>   
-  <p>  
-    <%= text_field_tag :search, params[:search] %>  
-    <%= submit_tag "Buscar por nombre", :name => nil %>  
-  </p>  
-<% end %>  
-<table>
+   <h3>Listado cuidadores</h3>
+
+<table class="table table-hover">
   <tr>
     <th>Nombre</th>
     <th>Apellidos</th>
     <th>Email</th>
-    <th>Teléfoo</th>
+    <th>Teléfono</th>
     <th>Localizar por cuidador</th>
-    <th>Calle</th>
     <th>Provincia</th>
     <th>Código postal</th>
 
 
-    <th>Ver</th>
+    <th></th>
 
   </tr>
 
@@ -29,8 +44,7 @@
     <td><%= carer.last_name %></td>
     <td><%= carer.email %></td>
     <td><%= carer.phone %></td>
-    <td><%= carer.locate %></td>
-    <td><%= carer.street %></td>
+    <td><%= status_tag(carer.locate) %></td>
     <td><%= carer.province %></td>
     <td><%= carer.postal_code %></td>
      <td><%= link_to 'Editar', {:action => 'edit', :id => carer.id, :current_shelter_id => @shelter.id} %></td>
@@ -38,9 +52,13 @@
   </tr>
 <% end %>
 </table>
-<div class="apple_pagination">
-      <%= will_paginate @carers, :container => false %>
   </div>
-<br />
+
+
+</div><!-- final del row -->
+
+  <div class="apple_pagination">
+   <%= will_paginate @carers, :container => false %>
+  </div>
 
 

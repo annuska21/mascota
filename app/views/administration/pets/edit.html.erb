@@ -1,14 +1,15 @@
-<h1>Editar mascota</h1>
-
-<%= link_to 'Volver', shelter_pets_path %>
+<%= link_to '<< Volver', shelter_pets_path %>
+<div class="info">
+<h3>Editar mascota</h3>
 
   <%= form_for([@shelter, @pet], url: shelter_pet_path(@shelter, @pet), html: { multipart: true }) do |f| %>
 
     <%= render(:partial  => "form", :locals => {:f => f}) %>
 
-    <div class="form-buttons">
-    <%= submit_tag("Actualizar datos") %>
-    </div>
-<% end %>
 
+    <div class="form-buttons">
+    <%= submit_tag("Actualizar datos", {:class=>"btn btn-info"}) %>
+    </div>
+  <% end %>
+</div>
 

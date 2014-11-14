@@ -2,8 +2,6 @@ class ListSheltersController < ApplicationController
   
   before_filter :find_shelter
 
-  # GET /shelters
-  # GET /shelters.json
 
   def index  
     if params[:search].present?  
@@ -13,9 +11,6 @@ class ListSheltersController < ApplicationController
     end  
   end  
 
-
-  # GET /shelters/1
-  # GET /shelters/1.json
   def show
     @shelter = Shelter.find(params[:id])
 
@@ -23,7 +18,7 @@ class ListSheltersController < ApplicationController
   end
 
   def listed
-     @pets = Pet.where(:shelter_id => @shelter.id).en_adopcion
+     @pets = Pet.where(:shelter_id => @shelter.id).en_adopcion.paginate(:page => params[:page])
   end
 
   def find_shelter

@@ -78,9 +78,9 @@ ActiveRecord::Schema.define(:version => 20141111161426) do
     t.date     "birthday"
     t.text     "commentary"
     t.text     "special_need"
-    t.datetime "created_at",                                    :null => false
-    t.datetime "updated_at",                                    :null => false
-    t.string   "picture"
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
+    t.string   "picture",            :default => "sin_imagen.png"
     t.string   "gender",             :default => "Desconocido"
   end
 

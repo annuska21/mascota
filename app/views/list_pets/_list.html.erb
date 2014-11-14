@@ -1,35 +1,19 @@
 <div id="filterrific_results">
-<table>
-  <tr>
-   
-    <th></th>
+            <% @pets.each do |pet| %>
 
-    <th>Raza</th>
-    <th>Mascota</th>
-    <th>name</th>
-    <td>Provincia</td>
-    <th>Fecha nacimiento</th>
-    <th>Tamaño</th>
-    <th>Color</th>
-    <th></th>
-  </tr>
-
-    <% @pets.each do |pet| %>
-  <tr>
-    <td><%= image_tag(pet.picture_url, :size => '150x150', :alt => 'imagen') if pet.picture? %></td>
-    <td><%= pet.pet_type_breed.name %></td>
-    <td><%= pet.pet_type.name %></td>
-    <td><%= pet.name %></td>
-    <td><%= pet.shelter.province %></td>
-    <td><%= pet.birthday %></td>
-    <td><%= pet.pet_size.name %></td>
-    <td><%= pet.pet_type_colour.name %></td>
-
-    <td><%= link_to("Ver detalles", {:action => 'show', :controller => 'list_pets', :id => pet.id}) %></td>
-  </tr>
-<% end %>
-</table>
-<div class="apple_pagination">
-      <%= will_paginate @pets, :container => false %>
-  </div>
+                  <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="item">
+                      <div class="img-peq">
+           <%= image_tag(pet.picture_url, :size => '250x250', :alt => 'imagen') if pet.picture? %>        </div>           
+                        <div class="info">
+                          <h3><%= pet.name %> | <%= pet.pet_type.name %></h3>
+                          <p>Raza: <%= pet.pet_type_breed.name %></p>
+                          <p>Años: <%= pet.age %> Sexo: <%= pet.gender %></p>
+                          <p><%= pet.province %></p>
+                          <p><%= link_to("Conocer más a ", {:action => 'show', :controller => 'list_pets', :id => pet.id}) %><%= pet.name %></p>
+                        </div>
+                    </div>
+                  </div>
+      <% end %>
+ 
 </div>

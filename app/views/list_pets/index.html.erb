@@ -1,82 +1,93 @@
-<h1>Listado de mascotas</h1>
 
-<%= form_for @filterrific do |f| %>
-  <div>
-    Search
-    <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
-  </div>
 
-  <div>
-    Province
-    <%= f.select(
-      :with_province, 
-      @filterrific.select_options[:with_province],
-      { include_blank: '- Any -' }
-    ) %>
- 
-  </div>
-
-  <div>
-    Refugio
-    <%= f.select(
-      :with_shelter_id,
-      @filterrific.select_options[:with_shelter_id],
-      { include_blank: '- Any -' }
-    ) %>
- 
-  </div>
-
-   <div>
-    Tamaño
-    <%= f.select(
-      :with_pet_size_id,
-      @filterrific.select_options[:with_pet_size_id],
-      { include_blank: '- Any -' }
-    ) %>
-
-  </div>
-
-  <div>
-    Tipo de pelo
-    <%= f.select(
-      :with_hair_type_id,
-      @filterrific.select_options[:with_hair_type_id],
-      { include_blank: '- Any -' }
-    ) %>
- 
-  </div>
+<div class="row">
+  <div class="col-med-4 col-lg-3">
+    <%= form_for @filterrific do |f| %>
     <div>
-    Raza
-    <%= f.select(
-      :with_pet_type_breed_id,
-      @filterrific.select_options[:with_pet_type_breed_id],
-      { include_blank: '- Any -' }
-    ) %>
- 
-  </div>
+        <%= link_to(
+          'Borrar filtros',
+          reset_filterrific_list_pets_path,
+        ) %>
+      </div>
+     <div>
+
+        <h4>Selecciona el tipo de mascota</h4>
+        <%= f.select(
+          :with_pet_type_ids,
+          @filterrific.select_options[:with_pet_type_ids],
+          { include_blank: '- Cualquiera -' },
+          :class => "form-control"
+        ) %>
+     
+     </div>
+     <div>
+        <h4>Selecciona la raza</h4>
+        <%= f.select(
+          :with_pet_type_breed_id,
+          @filterrific.select_options[:with_pet_type_breed_id],
+          { include_blank: '- Cualquiera -' },
+          :class => "form-control"
+        ) %>
+     
+      </div>
+     <div>
+       <h4> Filtra por provincia </h4>
+        <%= f.select(
+          :with_province, 
+          @filterrific.select_options[:with_province],
+          { include_blank: '- Cualquiera -' },
+           :class => "form-control"
+        ) %>
+     
+      </div>
+
       <div>
-    Tipo
-    <%= f.select(
-      :with_pet_type_ids,
-      @filterrific.select_options[:with_pet_type_ids],
-      { include_blank: '- Any -' }
+        <h4>Selecciona el refugio</h4>
+        <%= f.select(
+          :with_shelter_id,
+          @filterrific.select_options[:with_shelter_id],
+          { include_blank: '- Cualquiera -' },
+          :class => "form-control"
+        ) %>
+     
+      </div>
+
+       <div>
+        <h4>Selecciona el tamaño</h4>
+        <%= f.select(
+          :with_pet_size_id,
+          @filterrific.select_options[:with_pet_size_id],
+          { include_blank: '- Cualquiera -' },
+          :class => "form-control"
+        ) %>
+
+      </div>
+
+      <div>
+       <h4>Selecciona el tipo de pelo</h4>
+        <%= f.select(
+          :with_hair_type_id,
+          @filterrific.select_options[:with_hair_type_id],
+          { include_blank: '- Cualquiera -' },
+          :class => "form-control"
+        ) %>
+     
+      </div>
+      
+
+
+      <% end %>
+  </div> <!-- Final del row col -->
+  <div class="col-med-8 col-lg-9">
+    <h3>Mascotas que cumplen con los criterios de búsqueda</h3>
+    <%= render(
+      partial: 'list',
+      locals: { pets: @pets }
     ) %>
- 
-  </div>
-  <div>
-    <%= link_to(
-      'Reset filters',
-      reset_filterrific_list_pets_path,
-    ) %>
-  </div>
-  <%# add an automated spinner to your form when the list is refreshed %>
 
-<% end %>
+  </div><!-- Final del row col -->
 
-<%= render(
-  partial: 'list',
-  locals: { pets: @pets }
-) %>
-
-<br />
-
+</div> <!-- Final del row -->
+<div class="apple_pagination">
+      <%= will_paginate @pets, :container => false %>
+</div>

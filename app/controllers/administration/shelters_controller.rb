@@ -21,7 +21,7 @@ end
 
   
   def update
-    @shelter = Shelter.find(params[:id])
+     @shelter = current_shelter
 
 
       if @shelter.update_attributes(params[:shelter])

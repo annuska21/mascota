@@ -7,13 +7,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-    <% if !flash[:notice].blank? %>
+
+
+ <div class="container">
+  <div class="page-header">
+    <h1>mascota <small>Buscador de mascotas</small></h1>
+   </div>
+  <%= render 'layouts/header' %>
+   
+      <% if !flash[:notice].blank? %>
         <div class="notice">
           <%= flash[:notice] %>
        </div>
     <% end %>
- <div class="container">
-     <%= render 'layouts/header' %>
+
+
     <%= yield %>
     <%= render 'layouts/footer' %>
  </div>

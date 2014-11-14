@@ -1,65 +1,65 @@
 <p id="notice"><%= notice %></p>
-<%= link_to 'Volver', list_shelters_path %>
-<p>
-  <b>Nombre:</b>
-  <%= @shelter.name %>
-</p>
+ <div class="enlaces">
+  <%= link_to '<< Volver al listado', list_shelters_path %>
+</div>
+<div class="info">
 
-<p>
-  <b>Email:</b>
-  <%= @shelter.email %>
-</p>
+<div class="row">
 
-<p>
-  <b>Teléfono:</b>
-  <%= @shelter.phone %>
-</p>
+<div class="col-lg-6 col-md-6">
+ <p>
+    <b>Nombre:</b>
+    <%= @shelter.name %>
+  </p>
 
+  <p>
+    <b>Contacto</b>
+    Email: <%= @shelter.email %> | Teléfono:  <%= @shelter.phone %>
+  </p>
 
-<p>
-  <b>Página Web:</b>
-  <%= @shelter.web %>
-</p>
+  <p>
+    <b>Página Web:</b>
+    <%= @shelter.web %>
+  </p>
 
-<p>
-  <b>Requisitos adopcion:</b>
-  <%= @shelter.adoption_requirement %>
-</p>
+  <p>
+    <b>Requisitos adopcion:</b>
+    <%= @shelter.adoption_requirement %>
+  </p>
 
-<p>
-  <b>description asociacion:</b>
-  <%= @shelter.shelter_description %>
-</p>
+  <p>
+    <b>description asociacion:</b>
+    <%= @shelter.shelter_description %>
+  </p>
 
-<p>
-  <b>Posibilidad de acoger:</b>
-  <%= @shelter.carer_possibility %>
-</p>
+  <p>
+    <b>Posibilidad de acoger:</b>
+    <%= status_tag(@shelter.carer_possibility) %>.
+    <%= @shelter.carer_detail %>
+  </p>
+  <p>
+    <b>Voluntariado:</b>
+    <%= status_tag(@shelter.voluntary) %>.
+    <%= @shelter.voluntary_detail %>
+  </p>
 
-<p>
-  <b>Detalles de acogida:</b>
-  <%= @shelter.carer_detail %>
-</p>
-
-<p>
   <b>Informacion donaciones:</b>
-  <%= @shelter.donation_information %>
-</p>
+    <%= @shelter.donation_information %>
+  </p>
 
-<p>
-  <b>Voluntariado:</b>
-  <%= @shelter.voluntary %>
-</p>
+  <p>
+    <b>Dirección:</b>
+    <%= @shelter.address %>
+  </p>
+</div><!-- Final row columna datos -->
+<div class="col-lg-6 col-md-6">
+  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@shelter.latitude}%2c#{@shelter.longitude}" %>
+</div><!-- Final row columna imagen-->
 
-<p>
-  <b>Detalles Voluntariado:</b>
-  <%= @shelter.voluntary_detail %>
-</p>
+</div> <!-- Final row -->
 
-<p>
-  <b>Dirección:</b>
-  <%= @shelter.address %>
-</p>
+ 
+</div>
 
 
 

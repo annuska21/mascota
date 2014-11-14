@@ -27,10 +27,9 @@ textarea {
   margin-bottom: 10px;
 }
 /* status_tag */
-span.status { display: block; width: 10px; height: 10px;
-  margin: 0.25em auto; padding: 0; border: 1px solid #000000; }
-span.status.true  { background: green; color: green; }
-span.status.false { background: red; color: red; }
+
+span.status.true  { color: green; }
+span.status.false { color: red; }
 /* footer */
 
 footer {
@@ -88,3 +87,32 @@ footer ul li {
     color: black; }
     .apple_pagination a:hover, .apple_pagination a:focus {
       text-decoration: underline; }
+
+div.imagen{
+  width: 400px;
+  height: 300px;
+  background: #4C2516 url('/assets/sin_imagen.png') repeat-y 0 0; color: #F2DC87;
+}
+div.img-peq{
+  width: 250px;
+  height: 250px;
+  background: #4C2516 url('/assets/sin_imagen.png') repeat-y 0 0; color: #F2DC87;
+
+}
+div.info{
+  margin-top: 10px;
+  padding-top: 5px;
+  padding-left: -25px;
+  padding-right: -25px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
+}
+a.enlaces{
+  margin-top: 10px;
+  padding-top: 5px;
+
+}
+li.current{
+  border-bottom: 4px solid #5bc0de;
+  color:red;
+}

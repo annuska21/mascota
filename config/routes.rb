@@ -21,11 +21,11 @@ Mascota::Application.routes.draw do
 
   #get "static_pages/shelters_show"
 
-  resources :list_pets do
+  resources :list_pets, :path => "buscador" do
     get :reset_filterrific, on: :collection
   end
-  
-  resources :list_shelters do
+
+  resources :list_shelters, :path=>"refugios" do
     collection do
     get 'listed'
     end
@@ -33,9 +33,9 @@ Mascota::Application.routes.draw do
 
 
    scope :module => 'administration' do
-    resources :shelters do
-      resources :pets
-      resources :carers
+    resources :shelters, :path => "administracion" do
+      resources :pets, :path => "mascotas"
+      resources :carers, :path => "cuidadores"
     end
   
   end

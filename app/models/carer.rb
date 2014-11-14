@@ -35,5 +35,9 @@ class Carer < ActiveRecord::Base
     end  
   self.per_page = 10
 
+    def name_firstname
+    [name, last_name].compact.join(', ')
+  end
+
   attr_accessible :last_name, :street, :commentary, :postal_code, :email, :locate, :name, :province, :phone, :shelter_id
 end

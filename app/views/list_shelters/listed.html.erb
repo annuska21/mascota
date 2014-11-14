@@ -1,29 +1,27 @@
-<h1>Listado de mascotas</h1>
-<%= link_to 'volver', list_shelters_path %>
-<table>
-  <tr>
-   
-    <th></th>
+ <div class="enlaces">
+  <%= link_to '<< Volver al listado', list_shelters_path %>
+</div>
 
-    <th>Raza</th>
-    <th>Mascota</th>
-    <th>name</th>
-    <th>Fecha nacimiento</th>
-    <th>Tamaño</th>
-    <th>Color</th>
-    <th></th>
-  </tr>
+ <h1>Listado de mascotas de <%= @shelter.name %></h1>
 
-    <% @pets.each do |pet| %>
-  <tr>
-    <td><%= image_tag(pet.picture_url, :size => '150x150', :alt => 'imagen') if pet.picture? %></td>
-    <td><%= pet.pet_type_breed.name %></td>
-    <td><%= pet.pet_type.name %></td>
-    <td><%= pet.name %></td>
-    <td><%= pet.birthday %></td>
-    <td><%= pet.pet_size.name %></td>
-    <td><%= pet.pet_type_colour.name %></td>
-  
-  </tr>
-<% end %>
-</table>
+<div class="row">
+     <% @pets.each do |pet| %>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="item">
+            <div class="img-peq">
+           <%= image_tag(pet.picture_url, :size => '250x250', :alt => 'imagen') if pet.picture? %>       
+             </div>           
+             <div class="info">
+              <h3><%= pet.name %> | <%= pet.pet_type.name %></h3>
+                <p>Raza: <%= pet.pet_type_breed.name %></p>
+                <p>Años: <%= pet.age %> Sexo: <%= pet.gender %></p>
+                     
+             </div>
+            </div>
+          </div>
+      <% end %>
+</div>
+      <div class="apple_pagination">
+      <%= will_paginate @pets, :container => false %>
+      </div>
+

@@ -1,61 +1,86 @@
-<h1>Listado de mascotas</h1>
-<%= link_to 'Nueva mascota', new_shelter_pet_path(:current_shelter_id => @shelter.id) %>
-
-
-<div class="filter_options_container">
-
-  <form class="filter_form">
-    <%= select("pet_status", "name", PetStatus.all.collect(&:name),
-      { include_blank: '- Any -' } ) %>
-    <input type="submit" value="Filter" />
-  </form>
-</div>
-
-<%= form_tag shelter_pets_path, :method => 'get' do %>  
- 
-  <p>  
-    <%= text_field_tag :search, params[:search] %>  
-    <%= submit_tag "Buscar por nombre", :name => nil %>  
-  </p>  
-<% end %>  
-
-<table>
-  <tr>
-
-    <th></th>
-    <th>Raza</th>
-    <th>Mascota</th>
-    <th>Nombre</th>
-    <th>Refugio</th>
-    <th>Fecha nacimiento</th>
-    <th>Cuidador</th>
-    <th>Estado nombre</th>
-     <th>Tamaño</th>
-
-    <th></th>
-  </tr>
-
-    <% @pets.each do |pet| %>
-  <tr>
-    <td><%= image_tag(pet.picture_url, :size => '150x150', :alt => 'imagen') if pet.picture? %></td>
-    <td><%= pet.pet_type_breed.name %></td>
-    <td><%= pet.pet_type.name %></td>
-    <td><%= pet.name %></td>
-    <td><%= pet.shelter.name %></td>   
-    <td><%= pet.birthday %></td> 
-    <td><%= pet.carer.name if pet.carer %></td>
-     <td><%= pet.pet_status.name %></td> 
-    <td><%= pet.pet_size.name %></td>
-    
-   <td><%= link_to 'Editar', {:action => 'edit', :id => pet.id, :current_shelter_id => @shelter.id} %></td>
-    
-
-  </tr>
-<% end %>
-</table>
-<div class="apple_pagination">
-      <%= will_paginate @pets, :container => false %>
+<div class="row">
+  <div class="col-lg-2 col-md-2">
+   <%= render 'layouts/nav_administracion' %>
   </div>
-<br />
+  <div class="col-lg-10 col-md-10">   
+    <div class="row">
+       <div class="col-lg-3 col-md-3">
+        <%= link_to 'Nueva mascota', new_shelter_pet_path(:current_shelter_id => @shelter.id), class: "btn btn-primary" %>
+       </div>
+      <div class="col-lg-5 col-md-5">
+        <div class="filter_options_container">
+          <form class="filter_form">
+            <div class="row">
+              <div class="col-lg-7 col-md-7">
+                <%= select("pet_status", "name", PetStatus.all.collect(&:name),
+                { include_blank: '- Cualquiera -' },
+                :class => "form-control" ) %>
+              </div>
+              <div class="col-lg-5 col-md-5">
+                <input type="submit" value="Filtrar" class="btn btn-info"/>
+              </div>
+            </div>    
+          </form>
+       </div>
+      </div><!-- final primera columna -->
+      <div class="col-lg-4 col-md-4">
+        <%= form_tag shelter_pets_path, :method => 'get' do %>  
+         <div class="row">
+          <div class="col-lg-7 col-md-7">
+            <%= text_field_tag :search, params[:search], :class=>"form-control" %>  
+          </div>
+          <div class="col-lg-5 col-md-5">
+            <%= submit_tag "Buscar por nombre", :name => nil, :class => "btn btn-info" %>
+          </div>
+         </div>
+        <% end %>  
+      </div><!-- final segunda columna -->
+
+    </div><!-- final row -->
+    <h3>Listado de mascotas</h3>
+
+
+    <table class="table table-hover">
+      <tr>
+
+        <th></th>
+        <th>Raza</th>
+        <th>Mascota</th>
+        <th>Nombre</th>
+        <th>Años</th>
+        <th>Cuidador</th>
+        <th>Estado</th>
+        <th>Tamaño</th>
+
+        <th></th>
+      </tr>
+
+        <% @pets.each do |pet| %>
+      <tr>
+        
+
+        <td><div class="img-pq"><%= image_tag(pet.picture_url, :size => '150x150', :alt => 'imagen') if pet.picture? %></div></td>
+        <td><%= pet.pet_type_breed.name %></td>
+        <td><%= pet.pet_type.name %></td>
+        <td><%= pet.name %></td>
+        <td><%= pet.age %></td> 
+        <td><%= pet.carer.name_firstname if pet.carer %></td>
+         <td><%= pet.pet_status.name %></td> 
+        <td><%= pet.pet_size.name %></td>
+        
+       <td><%= link_to 'Editar', {:action => 'edit', :id => pet.id, :current_shelter_id => @shelter.id} %></td>
+        
+
+      </tr>
+    <% end %>
+    </table>
+    <div class="apple_pagination">
+          <%= will_paginate @pets, :container => false %>
+      </div>
+    <br />
+      </div>
+    </div>
+
+
 
 

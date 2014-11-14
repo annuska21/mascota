@@ -1,12 +1,13 @@
-<h1>Alta cuidador</h1>
+<%= link_to '<< Volver', shelter_carers_path %>
+<div class="info">
+  <h3>Alta cuidador</h3>
 
-<%= link_to 'Volver', shelter_carers_path %>
+    <%= form_for([@shelter, @carer], :url => {:action=>'create'}) do |f| %>
+    <%= render(:partial  => "form", :locals => {:f => f}) %>
 
-  <%= form_for([@shelter, @carer], :url => {:action=>'create'}) do |f| %>
-  <%= render(:partial  => "form", :locals => {:f => f}) %>
+  <div class="form-buttons">
+  <%= submit_tag("Alta", {:class=>"btn btn-info"}) %>
 
-<div class="form-buttons">
-<%= submit_tag("Alta") %>
-
+  </div>
 </div>
 <% end %>

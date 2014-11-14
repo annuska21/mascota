@@ -1,12 +1,12 @@
-<h1>Editar cuidador</h1>
+<%= link_to '<< Volver', shelter_carers_path %>
+<div class="info">
+   <h3>Editar cuidador</h3>
+    <%= form_for([@shelter, @carer], url: shelter_carer_path(@shelter, @carer)) do |f| %>
 
-<%= link_to 'Volver', shelter_carers_path %>
+      <%= render(:partial  => "form", :locals => {:f => f}) %>
 
-  <%= form_for(@carer, url: shelter_carer_path(@carer), html: { multipart: true }) do |f| %>
-
-    <%= render(:partial  => "form", :locals => {:f => f}) %>
-
-    <div class="form-buttons">
-    <%= submit_tag("Actualizar datos") %>
-    </div>
-<% end %>
+      <div class="form-buttons">
+      <%= submit_tag("Actualizar datos", {:class=>"btn btn-info"}) %>
+      </div>
+    <% end %>
+</div>
