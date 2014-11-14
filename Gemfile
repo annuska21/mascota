@@ -7,7 +7,15 @@ gem 'rails', '3.2.19'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
+group :development do
+  gem 'mysql2'
+end
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
+
+
 
 gem 'devise' , '2.2.8'
 gem 'will_paginate', '~> 3.0.5'
