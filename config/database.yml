@@ -23,7 +23,7 @@ test:
   password: Mishkin1
 
 production:
-  database: mascotas
+  database: mascota
   adapter: mysql2
   host: mascota.crijneydfqj6.eu-west-1.rds.amazonaws.com
   pool: 5
