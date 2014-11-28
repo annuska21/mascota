@@ -23,9 +23,11 @@ test:
   password: Mishkin1
 
 production:
-  database: mascotas_production
-  adapter: postgresql
+  database: mascotas
+  adapter: mysql2
+  host: mascota.crijneydfqj6.eu-west-1.rds.amazonaws.com
   pool: 5
   timeout: 5000
+  port: 3306
   username: root
   password: Mishkin1
