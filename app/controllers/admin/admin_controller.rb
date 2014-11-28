@@ -1,7 +1,10 @@
 class Admin::AdminController < ApplicationController
 
-
   before_filter :confirm_admin 
+  layout 'admin'
+  def index
+
+  end
 
   def confirm_admin
     
@@ -10,6 +13,7 @@ class Admin::AdminController < ApplicationController
     end
  
   end
+
 
 
 end

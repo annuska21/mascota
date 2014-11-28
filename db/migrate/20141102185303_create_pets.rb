@@ -16,7 +16,7 @@ class CreatePets < ActiveRecord::Migration
       t.string :name
       t.date :birthday
       t.text :commentary
-      t.text :special_need, default => "No tiene o no se conocen"
+      t.text :special_need
 
       t.timestamps
     end

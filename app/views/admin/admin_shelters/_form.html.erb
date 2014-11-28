@@ -2,56 +2,69 @@
 
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label(:name, "Nombre") %><br />
     <%= f.text_field :name %>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label(:email, "Usuario/Email") %><br />
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.number_field :phone %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label(:password, "Contraseña") %><br />
     <%= f.text_field :password %>
   </div>
   <div class="field">
-    <%= f.label :web %><br />
+    <%= f.label(:phone, "Teléfono") %><br />
+    <%= f.number_field :phone %>
+  </div>
+     <div class="field">
+      <%= f.label(:street, "Calle") %><br />
+      <%= f.text_field :street %>
+   </div>
+      <div class="field">
+        <%= f.label(:postal_code, "Código postal") %><br />
+        <%= f.text_field :postal_code %>
+      </div>
+      <div class="field">
+        <%= f.label(:province, "Provincia") %><br />
+                    <%= f.select(:province,
+               Province.options_for_select,
+              { include_blank: '- Provincia -' }
+            ) %>
+      </div>
+
+  <div class="field">
+    <%= f.label(:web, "Página web") %><br />
     <%= f.text_field :web %>
   </div>
   <div class="field">
-    <%= f.label :adoption_requirement %><br />
-    <%= f.text_area :adoption_requirement %>
+    <%= f.label(:adoption_requirement, "Requisitos de adopción") %><br />
+    <%= f.text_area(:adoption_requirement, :rows => 5) %>
   </div>
   <div class="field">
-    <%= f.label :shelter_description %><br />
-    <%= f.text_area :shelter_description %>
+    <%= f.label(:shelter_description, "Descripción del reugio") %><br />
+    <%= f.text_area(:shelter_description, :rows => 5) %>
   </div>
   <div class="field">
-    <%= f.label :carer_possibility %><br />
+    <%= f.label(:carer_possibility,"Necesito casas de acogida") %><br />
     <%= f.check_box :carer_possibility %>
   </div>
   <div class="field">
-    <%= f.label :carer_detail %><br />
-    <%= f.text_area :carer_detail %>
+    <%= f.label(:carer_detail, "Requisitos de las casas de acogida") %><br />
+    <%= f.text_area(:carer_detail, :rows => 5) %>
   </div>
   <div class="field">
-    <%= f.label :donation_information %><br />
-    <%= f.text_area :donation_information %>
+    <%= f.label(:donation_information,"información de donaciones") %><br />
+    <%= f.text_area(:donation_information, :rows => 5)  %>
   </div>
   <div class="field">
-    <%= f.label :voluntary %><br />
+    <%= f.label(:voluntary, "Se necesitan voluntarios") %><br />
     <%= f.check_box :voluntary %>
   </div>
   <div class="field">
-    <%= f.label :voluntary_detail %><br />
-    <%= f.text_area :voluntary_detail %>
+    <%= f.label(:voluntary_detail, "Detalles del voluntariado") %><br />
+    <%= f.text_area(:voluntary_detail, :rows => 5) %>
   </div>
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </div>
+
 

@@ -22,36 +22,51 @@
     </div>
 
    <h3>Listado cuidadores</h3>
+<div class="row">
+  <div class="col-md-12 col-lg-12 col-sm-12 hidden-xs">
+    <table class="table table-hover">
+      <tr>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+        <th>Localizar por cuidador</th>
+        <th>Provincia</th>
+        <th>Código postal</th>
 
-<table class="table table-hover">
-  <tr>
-    <th>Nombre</th>
-    <th>Apellidos</th>
-    <th>Email</th>
-    <th>Teléfono</th>
-    <th>Localizar por cuidador</th>
-    <th>Provincia</th>
-    <th>Código postal</th>
 
+        <th></th>
 
-    <th></th>
+      </tr>
 
-  </tr>
+    <% @carers.each do |carer| %>
+      <tr>
+        <td><%= carer.name %></td>
+        <td><%= carer.last_name %></td>
+        <td><%= carer.email %></td>
+        <td><%= carer.phone %></td>
+        <td><%= status_tag(carer.locate) %></td>
+        <td><%= carer.province %></td>
+        <td><%= carer.postal_code %></td>
+         <td><%= link_to 'Editar', {:action => 'edit', :id => carer.id, :current_shelter_id => @shelter.id} %></td>
+        
+      </tr>
+    <% end %>
+    </table>
+  </div>
+  <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+    <% @carers.each do |carer| %>
+      <p>Nombre: <%= carer.name %>, <%= carer.last_name %></p>
+      <p>E-mail: <%= carer.email %></p>
+      <p>Teléfono: <%= carer.phone %></p>
+      <p>Localizar por cuidador: <%= status_tag(carer.locate) %></p>
+      <p>Provincia: <%= carer.province %></p>
+      <p><td><%= link_to 'Editar', {:action => 'edit', :id => carer.id, :current_shelter_id => @shelter.id} %></td></p><br><br>
+    <% end %>
+  </div>
 
-<% @carers.each do |carer| %>
-  <tr>
-    <td><%= carer.name %></td>
-    <td><%= carer.last_name %></td>
-    <td><%= carer.email %></td>
-    <td><%= carer.phone %></td>
-    <td><%= status_tag(carer.locate) %></td>
-    <td><%= carer.province %></td>
-    <td><%= carer.postal_code %></td>
-     <td><%= link_to 'Editar', {:action => 'edit', :id => carer.id, :current_shelter_id => @shelter.id} %></td>
-    
-  </tr>
-<% end %>
-</table>
+</div>
+
   </div>
 
 

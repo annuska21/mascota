@@ -1,12 +1,12 @@
 <h1>Listado de mascotas</h1>
 <%= link_to 'Nueva mascota', new_admin_pet_path %>
-<table>
+<table class="table table-hover">
   <tr>
 
     <th></th>
     <th>Tipo de mascota</th>
     <th>Nombre</th>
-    <th>Fecha nacimiento</th>
+    <th>Edad</th>
     <th>Tamaño</th>
     <th></th>
     <th></th>
@@ -18,7 +18,7 @@
     <td><%= image_tag(pet.picture_url, :size => '150x150', :alt => 'imagen') if pet.picture? %></td>
     <td><%= pet.pet_type.name %></td>
     <td><%= pet.name %></td>
-    <td><%= pet.birthday %></td>
+    <td><%= pet.age %></td>
     <td><%= pet.pet_size.name %></td>
 
     <td><%= link_to 'Editar', edit_admin_pet_path(pet) %></td>

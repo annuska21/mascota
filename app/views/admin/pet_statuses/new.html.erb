@@ -1,5 +1,12 @@
-<h1>Nuevo name</h1>
+<h1>Nuevo estado</h1>
+<%= link_to '<< Volver', pet_statuses_path %>
+  <%= form_for(:pet_status, :url => {:action=>'create'}) do |f| %>
+  <%= render(:partial  => "form", :locals => {:f => f}) %>
 
-<%= render 'form' %>
+<div class="form-buttons">
+<%= submit_tag("Alta") %>
 
-<%= link_to 'Volver', pet_statuses_path %>
+</div>
+<% end %>
+
+

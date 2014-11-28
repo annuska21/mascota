@@ -12,12 +12,16 @@ class CreateCarers < ActiveRecord::Migration
        #t.integer :cp
        #t.text :comentarios
 
+      t.string :dni
       t.string :name
       t.string :last_name
       t.string :email
       t.integer :phone
       t.boolean :locate
+      t.boolean :inactive
+      t.string :via
       t.string :street
+      t.string :town
       t.string :province
       t.integer :postal_code
       t.text :commentary

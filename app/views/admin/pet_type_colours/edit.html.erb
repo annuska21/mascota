@@ -1,6 +1,13 @@
-<h1>Editar name</h1>
+<h1>Editar color</h1>
+<%= link_to '<< Volver', pet_type_colours_path %>
+   <%= form_for(@pet_type_colour, url: pet_type_colour_path(@pet_type_colour)) do |f| %>
 
-<%= render 'form' %>
+    <%= render(:partial  => "form", :locals => {:f => f}) %>
+  <div class="form-buttons">
+    <%= submit_tag("Actualizar datos") %>
 
-<% link_to 'Show', @pet_type_colour %> |
-<%= link_to 'Volver', pet_type_colours_path %>
+</div>
+<% end %>
+
+
+

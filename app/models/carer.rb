@@ -24,7 +24,27 @@ class Carer < ActiveRecord::Base
 
   has_many :pets
   belongs_to :shelter
+  validates :name, presence: true
+  validates :last_name, presence: true
+  validates :dni, presence: true
+  validates :province, presence: true
+  self.per_page = 5
   scope :sorted, lambda { order("carers.last_name ASC") }
+
+  validates_format_of :dni, :with => /\A[0-9]{8}[A-Za-z]\Z/, :on => :update, :message => "El DNI tiene que tener un formato como el siguiente: 12345678A"
+  validate :dni_letter_must_match_number
+  
+  def dni_letter_must_match_number
+    if "TRWAGMYFPDXBNJZSQVHLCKE"[dni[0..7].to_i % 23].chr != dni[8]
+      errors.add(:dni, "La letra no coincide con el número")
+    end
+  end
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, length: { maximum: 255 },
+                    format: { with: VALID_EMAIL_REGEX }
+  
+  VIA_TYPES = ["Calle", "Avenida", "Carretera","Camino", "Bulevar", "Plaza"]
   
   def self.search(search)  
       if search  
@@ -33,11 +53,11 @@ class Carer < ActiveRecord::Base
         scoped  
       end  
     end  
-  self.per_page = 10
+
 
     def name_firstname
     [name, last_name].compact.join(', ')
   end
 
-  attr_accessible :last_name, :street, :commentary, :postal_code, :email, :locate, :name, :province, :phone, :shelter_id
+  attr_accessible :inactive, :via, :town, :dni, :last_name, :street, :commentary, :postal_code, :email, :locate, :name, :province, :phone, :shelter_id
 end

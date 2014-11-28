@@ -1,11 +1,11 @@
 <h1>Listado Refugios</h1>
 <%= link_to 'Nuevo refugio', new_admin_shelter_path %>
-<table>
+<table class="table table-hover">
   <tr>
-    <th>name</th>
+    <th>Nombre</th>
     <th>Número de mascotas</th>
-    <th>carer_possibility</th>
-    <th>voluntary</th>
+    <th>Buscan casas de acogida</th>
+    <th>Buscan voluntarios</th>
     <th>Direccion</th>
 
     <th></th>
@@ -17,8 +17,8 @@
   <tr>
     <td><%= shelter.name %></td>
     <td><%= shelter.pets.en_adopcion.size %></td>
-    <td><%= shelter.carer_possibility %></td>
-    <td><%= shelter.voluntary %></td>
+    <td><%= status_tag(shelter.carer_possibility) %></td>
+    <td><%= status_tag(shelter.voluntary) %></td>
     <td><%= shelter.address %></td>
 
     <td></td>

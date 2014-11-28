@@ -1,4 +1,4 @@
-<%= form_for(@pet_type) do |f| %>
+
   <% if @pet_type.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@pet_type.errors.count, "error") %> prohibited this pet_type from being saved:</h2>
@@ -12,10 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label(:name, "Nombre") %><br />
     <%= f.text_field :name %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+

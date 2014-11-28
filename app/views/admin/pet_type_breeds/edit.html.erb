@@ -1,6 +1,14 @@
-<h1>Editar name</h1>
+<h1>Editar raza</h1>
+<%= link_to '<< Volver', pet_type_breeds_path %>
+   <%= form_for(@pet_type_breed, url: pet_type_breed_path(@pet_type_breed)) do |f| %>
 
-<%= render 'form' %>
+    <%= render(:partial  => "form", :locals => {:f => f}) %>
+  <div class="form-buttons">
+    <%= submit_tag("Actualizar datos") %>
 
-<% link_to 'Show', @pet_type_breed %> |
-<%= link_to 'Volver', pet_type_breeds_path %>
+</div>
+<% end %>
+
+
+
+

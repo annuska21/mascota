@@ -1,9 +1,8 @@
-<h1>Listing pet_types</h1>
-
-<table>
+<h1>Listado de tipos de mascota</h1>
+<%= link_to 'Nuevo tipo de mascota', new_pet_type_path %>
+<table class="table table-hover">
   <tr>
-    <th>name</th>
-    <th></th>
+    <th>Nombre</th>
     <th></th>
     <th></th>
   </tr>
@@ -11,13 +10,12 @@
 <% @pet_types.each do |pet_type| %>
   <tr>
     <td><%= pet_type.name %></td>
-    <td><%= link_to 'Show', pet_type %></td>
-    <td><%= link_to 'Edit', edit_pet_type_path(pet_type) %></td>
-    <td><%= link_to 'Destroy', pet_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Editar', edit_pet_type_path(pet_type) %></td>
+    <td><%= link_to 'Borrar', pet_type, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Pet type', new_pet_type_path %>
+

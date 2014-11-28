@@ -15,12 +15,16 @@ ActiveRecord::Schema.define(:version => 20141111161426) do
 
   create_table "carers", :force => true do |t|
     t.integer  "shelter_id"
+    t.string   "dni"
     t.string   "name"
     t.string   "last_name"
     t.string   "email"
     t.integer  "phone"
     t.boolean  "locate"
+    t.boolean  "inactive"
+    t.string   "via"
     t.string   "street"
+    t.string   "town"
     t.string   "province"
     t.integer  "postal_code"
     t.text     "commentary"
@@ -87,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20141111161426) do
   create_table "shelters", :force => true do |t|
     t.string   "name"
     t.integer  "phone"
+    t.string   "cif"
     t.string   "web"
     t.text     "adoption_requirement"
     t.text     "shelter_description"
@@ -95,8 +100,10 @@ ActiveRecord::Schema.define(:version => 20141111161426) do
     t.text     "donation_information"
     t.boolean  "voluntary"
     t.text     "voluntary_detail"
+    t.string   "via"
     t.string   "street"
-    t.string   "postal_code"
+    t.integer  "postal_code"
+    t.string   "town"
     t.string   "province"
     t.string   "country",              :default => "España"
     t.datetime "created_at",                                 :null => false

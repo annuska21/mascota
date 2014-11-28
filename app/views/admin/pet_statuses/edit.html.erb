@@ -1,6 +1,13 @@
-<h1>Editar name</h1>
+<h1>Editar estado</h1>
+<%= link_to '<< Volver', pet_statuses_path %>
+   <%= form_for(@pet_status, url: pet_status_path(@pet_status)) do |f| %>
 
-<%= render 'form' %>
+    <%= render(:partial  => "form", :locals => {:f => f}) %>
+  <div class="form-buttons">
+    <%= submit_tag("Actualizar datos") %>
 
-<% link_to 'Show', @pet_status %> |
-<%= link_to 'Volver', pet_statuses_path %>
+</div>
+<% end %>
+
+
+

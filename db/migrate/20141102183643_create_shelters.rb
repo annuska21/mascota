@@ -18,6 +18,7 @@ class CreateShelters < ActiveRecord::Migration
 
       t.string :name
       t.integer :phone
+      t.string :cif
       t.string :web
       t.text :adoption_requirement
       t.text :shelter_description
@@ -26,8 +27,10 @@ class CreateShelters < ActiveRecord::Migration
       t.text :donation_information
       t.boolean :voluntary
       t.text :voluntary_detail
+      t.string :via
       t.string :street
-      t.string :postal_code
+      t.integer :postal_code
+      t.string :town
       t.string :province
       t.string :country, :default => "España"
       t.timestamps

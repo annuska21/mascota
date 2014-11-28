@@ -54,6 +54,7 @@ Mascota::Application.routes.draw do
     resources :admin_shelters
     resources :admin_pets
     resources :admin_carers
+    resources :managements
   end
 
 

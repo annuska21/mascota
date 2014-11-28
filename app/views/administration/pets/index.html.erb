@@ -38,8 +38,8 @@
 
     </div><!-- final row -->
     <h3>Listado de mascotas</h3>
-
-
+<div class="row">
+  <div class="col-md-12 col-lg-12 col-sm-12 hidden-xs">
     <table class="table table-hover">
       <tr>
 
@@ -47,10 +47,8 @@
         <th>Raza</th>
         <th>Mascota</th>
         <th>Nombre</th>
-        <th>Años</th>
         <th>Cuidador</th>
-        <th>Estado</th>
-        <th>Tamaño</th>
+        <th>Estado</th>  
 
         <th></th>
       </tr>
@@ -59,21 +57,30 @@
       <tr>
         
 
-        <td><div class="img-pq"><%= image_tag(pet.picture_url, :size => '150x150', :alt => 'imagen') if pet.picture? %></div></td>
+        <td><div class="img-pq"><%= image_tag(pet.picture_url, :size => '100x100', :alt => 'imagen') if pet.picture? %></div></td>
         <td><%= pet.pet_type_breed.name %></td>
         <td><%= pet.pet_type.name %></td>
         <td><%= pet.name %></td>
-        <td><%= pet.age %></td> 
         <td><%= pet.carer.name_firstname if pet.carer %></td>
-         <td><%= pet.pet_status.name %></td> 
-        <td><%= pet.pet_size.name %></td>
-        
+         <td><%= pet.pet_status.name %></td>         
        <td><%= link_to 'Editar', {:action => 'edit', :id => pet.id, :current_shelter_id => @shelter.id} %></td>
         
 
       </tr>
     <% end %>
     </table>
+  </div> 
+  <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+    <% @pets.each do |pet| %>
+      <%= image_tag(pet.picture_url, :size => '100x100', :alt => 'imagen') if pet.picture? %><br>
+      <p><%= pet.name %> | <%= pet.pet_type.name %></p>
+      <p><%= pet.carer.name_firstname if pet.carer %></p>
+      <p><%= pet.pet_status.name %></p>
+      <p><%= link_to 'Editar', {:action => 'edit', :id => pet.id, :current_shelter_id => @shelter.id} %></p>
+     
+    <% end %>
+  </div>
+</div><!-- Final del row -->
     <div class="apple_pagination">
           <%= will_paginate @pets, :container => false %>
       </div>

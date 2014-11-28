@@ -1,6 +1,15 @@
-<h1>Editing hair_type</h1>
+<h1>Editar tipo de pelo</h1>
+<%= link_to '<< Volver', hair_types_path %>
 
-<%= render 'form' %>
+   <%= form_for(@hair_type, url: hair_type_path(@hair_type)) do |f| %>
 
-<%= link_to 'Show', @hair_type %> |
-<%= link_to 'Back', hair_types_path %>
+    <%= render(:partial  => "form", :locals => {:f => f}) %>
+  <div class="form-buttons">
+    <%= submit_tag("Actualizar datos") %>
+
+</div>
+<% end %>
+
+
+
+

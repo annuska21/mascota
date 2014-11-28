@@ -1,5 +1,12 @@
-<h1>New hair_type</h1>
+<h1>Nuevo tipo de pelo</h1>
+<%= link_to '<< Volver', hair_types_path %>
+  <%= form_for(:hair_type, :url => {:action=>'create'}) do |f| %>
+  <%= render(:partial  => "form", :locals => {:f => f}) %>
 
-<%= render 'form' %>
+<div class="form-buttons">
+<%= submit_tag("Alta") %>
 
-<%= link_to 'Back', hair_types_path %>
+</div>
+<% end %>
+
+

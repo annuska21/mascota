@@ -28,13 +28,15 @@ class Shelter < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable, :registerable,
   #:recoverable, :rememberable, :trackable, :validatable
-  devise :database_authenticatable
+  devise :database_authenticatable, :registerable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  has_many :pets
-  has_many :carers
+  has_many :pets, dependent: :destroy
+  has_many :carers, dependent: :destroy
   validates :name, presence: true
+  validates :cif, presence: true
+  validates :province, presence: true
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
@@ -46,6 +48,8 @@ class Shelter < ActiveRecord::Base
 
   self.per_page = 10
 
+  VIA_TYPES = ["Calle", "Avenida", "Carretera","Camino", "Bulevar", "Plaza"]
+
   def address
     [street, postal_code, province, country].compact.join(', ')
   end
@@ -54,5 +58,5 @@ class Shelter < ActiveRecord::Base
     order('LOWER(name)').map { |e| [e.name, e.id] }
   end 
 
-  attr_accessible :street, :postal_code, :province, :country, :latitude, :longitude, :carer_possibility, :address, :shelter_description, :carer_detail, :voluntary_detail, :email, :donation_information, :name, :adoption_requirement, :phone, :voluntary, :web
+  attr_accessible :via, :town, :cif, :street, :postal_code, :province, :country, :latitude, :longitude, :carer_possibility, :address, :shelter_description, :carer_detail, :voluntary_detail, :email, :donation_information, :name, :adoption_requirement, :phone, :voluntary, :web
 end

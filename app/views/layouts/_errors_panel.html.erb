@@ -2,12 +2,8 @@
 <% object = errors_panel %>
 <% if object.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(object.errors.count, "error") %> prohibited this object from being saved:</h2>
+    <p>Hay errores que impiden salvar el registro. Por favor, revisa los campos marcados</p>
 
-    <ul>
-    <% object.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
+
   </div>
 <% end %>

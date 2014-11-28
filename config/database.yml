@@ -24,6 +24,8 @@ test:
 
 production:
   database: mascotas_production
-  adapter: mysql2
+  adapter: postgresql
   pool: 5
   timeout: 5000
+  username: root
+  password: Mishkin1

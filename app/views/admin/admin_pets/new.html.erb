@@ -1,5 +1,6 @@
 <h1>Alta mascota</h1>
 
+<%= link_to '<< Volver', admin_pets_path %>
 
   <%= form_for(:pet, :url => {:action=>'create'}) do |f| %>
   <%= render(:partial  => "form", :locals => {:f => f}) %>
@@ -11,4 +12,3 @@
 <% end %>
 
 
-<%= link_to 'Volver', admin_pets_path %>

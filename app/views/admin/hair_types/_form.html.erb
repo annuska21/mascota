@@ -1,12 +1,9 @@
-<%= form_for(@hair_type) do |f| %>
-  
+
   <%= render :partial=>"layouts/errors_panel" , object: @hair_type %>
   
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label(:name, "Nombre") %><br />
     <%= f.text_field :name %>
   </div>
-  <div class="actions">
-    <%= f.submit  'submit' %>
-  </div>
-<% end %>
+
+

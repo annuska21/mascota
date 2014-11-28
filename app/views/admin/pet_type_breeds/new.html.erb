@@ -1,5 +1,12 @@
-<h1>Nueva name</h1>
+<h1>Nueva raza</h1>
+<%= link_to '<< Volver', pet_type_breeds_path %>
+  <%= form_for(:pet_type_breed, :url => {:action=>'create'}) do |f| %>
+  <%= render(:partial  => "form", :locals => {:f => f}) %>
 
-<%= render 'form' %>
+<div class="form-buttons">
+<%= submit_tag("Alta") %>
 
-<%= link_to 'Volver', pet_type_breeds_path %>
+</div>
+<% end %>
+
+

@@ -1,12 +1,12 @@
 <h1>Listado de razas</h1>
-
-<table>
+<%= link_to 'Nueva raza', new_pet_type_breed_path %>
+<table class="table table-hover">
   <tr>
-    <th>name</th>
+    <th>Nombre</th>
     <th>Tipo de mascota</th>
     <th></th>
     <th></th>
-    <th></th>
+
   </tr>
 
 <% @pet_type_breeds.each do |pet_type_breed| %>
@@ -21,4 +21,4 @@
 
 <br />
 
-<%= link_to 'Nueva name', new_pet_type_breed_path %>
+

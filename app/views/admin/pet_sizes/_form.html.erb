@@ -1,11 +1,9 @@
-<%= form_for(@pet_size) do |f| %>
+
    <%= render :partial=>"layouts/errors_panel" , object: @pet_size %>
 
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+
+

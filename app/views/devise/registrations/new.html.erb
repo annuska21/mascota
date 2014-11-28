@@ -1,18 +1,41 @@
-<h2>Sign up</h2>
+<h2>Registrarse</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+        <div><%= f.label(:cif, "CIF de la asociación") %><br />
+        <%= f.text_field :cif, :autofocus => true, :class=>"form-control" %></div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+        <div><%= f.label(:email,"Usuario / email") %><br />
+        <%= f.email_field :email, :class=>"form-control" %></div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+        <div><%= f.label(:password, "Contraseña") %><br />
+        <%= f.password_field :password, :class=>"form-control" %></div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+        <div><%= f.label(:password_confirmation, "Confirmar contraseña") %><br />
+        <%= f.password_field :password_confirmation, :class=>"form-control" %></div>
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
+          <div><%= f.label(:name, "Nombre de la asociación") %><br />
+        <%= f.text_field :name, :class=>"form-control" %></div>
 
-<%= render "devise/shared/links" %>
+          <div><%= f.label(:province, "Provincia") %><br />
+        <%= f.select(:province,
+                     Province.options_for_select,
+                    { include_blank: '- Provincia -' },
+                    :class => "form-control"
+                  ) %> </div>
+          
+        <div class="form-buttons"><%= f.submit "¡Registrarme!", :class=>"btn btn-info" %></div>
+      <% end %>
+    </div>
+    <div class="col-md-8">
+      <div class="pull-left"> ¿Ya eres un usuario registrado? Para entrar pulsa en el siguiente enlace: 
+        <%= render "devise/shared/links" %>
+      </div>
+    
+    </div>
+  </div>
+
+
+

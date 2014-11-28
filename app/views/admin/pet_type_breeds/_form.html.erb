@@ -1,15 +1,11 @@
-<%= form_for(@pet_type_breed) do |f| %>
+
   <%= render :partial=>"layouts/errors_panel" , object: @pet_type_breed %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label(:name, "Nombre") %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
     <%= f.label(:pet_type_id, "Tipo de mascota") %><br />
       <%= f.select(:pet_type_id, @pet_type.map {|s| [s.name, s.id]}) %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>

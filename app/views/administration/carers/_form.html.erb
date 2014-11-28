@@ -1,17 +1,18 @@
 
   <%= render :partial=>"layouts/errors_panel" , object: @carer %>
+  <p> Los campos marcados con asterisco son obligatorios.</p>
   <div class="row">
     <div class="col-lg-9 col-md-9">
       <div class="row">
         <div class="col-lg-3 col-md-3">
          <div class="field">
-            <%= f.label(:name, "Nombre") %><br />
+            <%= f.label(:name, "Nombre*") %><br />
             <%= f.text_field :name, :class=>"form-control" %>
           </div>
         </div>
         <div class="col-lg-3 col-md-3">
           <div class="field">
-            <%= f.label(:last_name, "Apellidos") %><br />
+            <%= f.label(:last_name, "Apellidos*") %><br />
             <%= f.text_field :last_name, :class=>"form-control" %>
           </div>
         </div>
@@ -23,16 +24,36 @@
         </div>
         <div class="col-lg-3 col-md-3">
           <div class="field">
-            <%= f.label :email %><br />
+            <%= f.label(:email, "Email*") %><br />
             <%= f.text_field :email, :class=>"form-control" %>
           </div>
         </div>
       </div>   <!--final del row -->
       <div class="row">
+      <div class="col-lg-3 col-md-3">
+        <div class="field">
+          <%= f.label(:dni, "NIF (00000000A)*") %> <br />
+          <%= f.text_field :dni, :class=>"form-control" %>
+       </div>
+      </div>
+      <div class="col-lg-3 col-md-3">
+       <div class="field"><br>
+         <%= f.label(:inactive, "Baja") %>: 
+         <%= f.check_box :inactive %>
+       </div>
+      </div>
+      <div class="col-lg-3 col-md-3">
+        <div class="field"><br>
+          <%= f.label(:locate, "Localizar") %>: 
+          <%= f.check_box :locate %>
+         </div>
+      </div>
+      </div><!-- Final del row -->
+      <div class="row">
         <div class="col-lg-3 col-md-3">
-          <div class="field"><br>
-            <%= f.label(:locate, "Localizar") %>: 
-            <%= f.check_box :locate %>
+         <div class="field">
+            <%= f.label(:via, "Tipo de via") %><br />         
+           <%= f.select :via,  Carer::VIA_TYPES, {include_blank: false}, { :class=>"form-control"} %>
           </div>
         </div>
         <div class="col-lg-3 col-md-3">
@@ -43,7 +64,7 @@
         </div>
         <div class="col-lg-3 col-md-3">
          <div class="field">
-            <%= f.label(:province, "Provincia") %><br />
+            <%= f.label(:province, "Provincia*") %><br />
             <%= f.select(:province,
                Province.options_for_select,
               { include_blank: '- Provincia -' },
@@ -56,17 +77,19 @@
             <%= f.label(:postal_code, "Código postal") %><br />
             <%= f.number_field :postal_code, :class=>"form-control" %>
           </div>
-        </div>
-        <div class="field">
-          <%= f.label(:commentary, "Comentarios") %><br />
-          <%= f.text_area(:commentary, :rows=>5, :class=>"form-control") %>
-       </div>
+
+        </div><!-- final columna -->
+    
+   
       </div>  <!--final del row -->
 
     </div><!--final columna -->
     <div class="col-lg-3 col-md-3">
 
-             
+      <div class="field">
+          <%= f.label(:commentary, "Comentarios") %><br />
+          <%= f.text_area(:commentary, :rows=>5, :class=>"form-control") %>
+       </div>
     </div><!--final columna -->
   </div><!--final del row -->
 

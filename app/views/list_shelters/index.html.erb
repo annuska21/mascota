@@ -8,32 +8,48 @@
 <% end %>  
 <!-- rest of page -->  
 <h3>Refugios</h3>
+<div class="row">
+  <div class="col-md-12 col-lg-12 col-sm-12 hidden-xs">
+      <table class="table table-hover">
+        <tr>
+          <th>Nombre</th>
+          <th>Número de mascotas</th>
+          <th>Ofrece de acoger</th>
+          <th>Necesitan voluntarios/padrinos</th>
+          <th>Provincia</th>
+          <th>Código postal</th>
+          <th></th>
 
-<table class="table table-hover">
-  <tr>
-    <th>Nombre</th>
-    <th>Número de mascotas</th>
-    <th>Ofrece de acoger</th>
-    <th>Necesitan voluntarios/padrinos</th>
-    <th>Provincia</th>
-    <th>Código postal</th>
-    <th></th>
+        </tr>
 
-  </tr>
-
-<% @shelters.each do |shelter| %>
-  <tr>
-    <td><%= shelter.name %></td>
-    <td><%= shelter.pets.en_adopcion.size %></td>
-    <td><%= status_tag(shelter.carer_possibility) %></td>
-    <td><%= status_tag(shelter.voluntary) %></td>
-    <td><%= shelter.province %></td>
-     <td><%= shelter.postal_code %></td>
-    <td><%= link_to 'Ver mascotas', {:action => "listed", :shelter_id => shelter.id} %></td>
-    <td><%= link_to 'Detalles', list_shelter_path(shelter) %></td>
-  </tr>
-<% end %>
-</table>
+      <% @shelters.each do |shelter| %>
+        <tr>
+          <td><%= shelter.name %></td>
+          <td><%= shelter.pets.en_adopcion.size %></td>
+          <td><%= status_tag(shelter.carer_possibility) %></td>
+          <td><%= status_tag(shelter.voluntary) %></td>
+          <td><%= shelter.province %></td>
+           <td><%= shelter.postal_code %></td>
+          <td><%= link_to 'Ver mascotas', {:action => "listed", :shelter_id => shelter.id} %></td>
+          <td><%= link_to 'Detalles', list_shelter_path(shelter) %></td>
+        </tr>
+      <% end %>
+      </table>
+  </div>
+  
+  <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+    <% @shelters.each do |shelter| %>
+       <p> Nombre: <%= shelter.name %></p>
+       <p> Número de mascotas: <%= shelter.pets.en_adopcion.size %></p>
+       <p> Necesitan casas acogida: <%= status_tag(shelter.carer_possibility) %></p>
+       <p> Necesitan voluntarios o padrinos: <%= status_tag(shelter.voluntary) %></p>
+       <p> Provincia: <%= shelter.province %></p>
+       <p> Código postal: <%= shelter.postal_code %></p>
+       <p> <%= link_to 'Ver mascotas', {:action => "listed", :shelter_id => shelter.id} %></p>
+       <p> <%= link_to 'Detalles', list_shelter_path(shelter) %></p><br><br>
+    <% end %>
+  </div>
+</div> <!--Final del row -->
 <div class="apple_pagination">
       <%= will_paginate @shelters, :container => false %>
   </div>
