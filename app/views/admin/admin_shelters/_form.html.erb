@@ -15,10 +15,18 @@
     <%= f.text_field :password %>
   </div>
   <div class="field">
+    <%= f.label(:cif, "CIF o NIF") %><br />
+    <%= f.number_field :cif %>
+  </div>
+  <div class="field">
     <%= f.label(:phone, "Teléfono") %><br />
     <%= f.number_field :phone %>
   </div>
-     <div class="field">
+  <div class="field">
+    <%= f.label(:via, "Tipo de via") %><br />         
+    <%= f.select :via,  Carer::VIA_TYPES, {include_blank: false}, { :class=>"form-control"} %>
+  </div>
+  <div class="field">
       <%= f.label(:street, "Calle") %><br />
       <%= f.text_field :street %>
    </div>

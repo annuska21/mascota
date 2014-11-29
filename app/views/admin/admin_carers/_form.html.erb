@@ -10,6 +10,10 @@
     <%= f.text_field :last_name %>
   </div>
   <div class="field">
+    <%= f.label(:nif, "NIF" )%><br />
+    <%= f.text_field :nif %>
+  </div>
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </div>
@@ -25,6 +29,10 @@
     <%= f.label(:shelter_id, "Refugio" )%><br />
     <%= f.select(:shelter_id, @shelter.map {|s| [s.name, s.id]}) %>
   </div>
+  <div class="field">
+    <%= f.label(:via, "Tipo de via") %><br />         
+    <%= f.select :via,  Carer::VIA_TYPES, {include_blank: false}, { :class=>"form-control"} %>
+  </div>  
   <div class="field">
     <%= f.label(:street, "Calle") %><br />
     <%= f.text_field :street %>
