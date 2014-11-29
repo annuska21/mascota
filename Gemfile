@@ -21,6 +21,7 @@ gem 'devise' , '2.2.8'
 gem 'will_paginate', '~> 3.0.5'
 gem 'geocoder'
 gem 'bootstrap-sass',       '3.2.0.0'
+gem 'autoprefixer-rails'
 gem 'filterrific'
 gem 'chosen-rails'
 
