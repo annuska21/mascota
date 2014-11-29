@@ -10,8 +10,8 @@
     <%= f.text_field :last_name %>
   </div>
   <div class="field">
-    <%= f.label(:nif, "NIF" )%><br />
-    <%= f.text_field :nif %>
+    <%= f.label(:dni, "NIF" )%><br />
+    <%= f.text_field :dni %>
   </div>
   <div class="field">
     <%= f.label :email %><br />
@@ -31,16 +31,19 @@
   </div>
   <div class="field">
     <%= f.label(:via, "Tipo de via") %><br />         
-    <%= f.select :via,  Carer::VIA_TYPES, {include_blank: false}, { :class=>"form-control"} %>
+    <%= f.select :via,  Carer::VIA_TYPES, {include_blank: false} %>
   </div>  
   <div class="field">
     <%= f.label(:street, "Calle") %><br />
     <%= f.text_field :street %>
   </div>
-  <div class="field">
-    <%= f.label(:province, "Provincia") %><br />
-    <%= f.text_field :province %>
-  </div>
+      <div class="field">
+        <%= f.label(:province, "Provincia") %><br />
+                    <%= f.select(:province,
+               Province.options_for_select,
+              { include_blank: '- Provincia -' }
+            ) %>
+      </div>
   <div class="field">
     <%= f.label(:postal_code, "Código postal") %><br />
     <%= f.number_field :postal_code %>
