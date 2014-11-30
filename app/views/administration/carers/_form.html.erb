@@ -53,7 +53,7 @@
         <div class="col-lg-3 col-md-3">
          <div class="field">
             <%= f.label(:via, "Tipo de via") %><br />         
-           <%= f.select :via,  Carer::VIA_TYPES, {include_blank: false}, { :class=>"form-control"} %>
+           <%= f.select :via,  Carer::VIA_TYPES, {include_blank: false}, { :class=>"form-control chosen-select"} %>
           </div>
         </div>
         <div class="col-lg-3 col-md-3">
@@ -68,7 +68,7 @@
             <%= f.select(:province,
                Province.options_for_select,
               { include_blank: '- Provincia -' },
-              :class => "form-control"
+              :class => "form-control chosen-select"
             ) %>
           </div>
         </div>
