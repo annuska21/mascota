@@ -11,7 +11,7 @@ class Administration::PetsController < Administration::AdministrationController
     end
     
   end
-
+  
 
 
 
@@ -26,6 +26,7 @@ class Administration::PetsController < Administration::AdministrationController
     @carer = Carer.where(:shelter_id => @shelter.id).order('name ASC')
     @pet_size = PetSize.order('name ASC')
     @pet_status = PetStatus.order('name DESC')
+    @pet_type_colours = PetTypeColour.all
   end
 
   def edit
@@ -38,6 +39,7 @@ class Administration::PetsController < Administration::AdministrationController
 
     @pet_size = PetSize.order('name ASC')
     @pet_status = PetStatus.order('name ASC')
+    @pet_type_colours = PetTypeColour.all
   end
 
 

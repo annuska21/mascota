@@ -1,13 +1,13 @@
 module ApplicationHelper
 
  def status_tag(boolean, options={})
-    options[:true_text]  ||= 'Sí'
-    options[:false_text] ||= 'No'
+    options[:true_text]  ||= ' Sí'
+    options[:false_text] ||= ' No'
 
     if boolean
-      content_tag(:span, options[:true_text], :class => 'status true')
+      content_tag(:span, options[:true_text], :class => 'glyphicon glyphicon-ok')
     else
-      content_tag(:span, options[:false_text], :class => 'status false')
+      content_tag(:span, options[:false_text], :class => 'glyphicon glyphicon-remove')
     end
   end
 

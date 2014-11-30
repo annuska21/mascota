@@ -19,13 +19,13 @@ class ListPetsController < ApplicationController
       }
         
       @pets = Pet.filterrific_find(@filterrific).en_adopcion.page(params[:page])
-
+      @pet_type_colours = PetTypeColour.all
       session[:filterrific_pets] = @filterrific.to_hash
 
     
     rescue ActiveRecord::RecordNotFound => e
       # There is an issue with the persisted param_set. Reset it.
-      puts "Had to reset filterrific params: #{ e.message }"
+      puts "Debes resetear los filtros: #{ e.message }"
       redirect_to(action: :reset_filterrific, format: :html) and return
     end
   end

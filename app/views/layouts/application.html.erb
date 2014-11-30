@@ -8,19 +8,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-
- <div class="container">
-  <div class="page-header">
-    <h1>mascota <small>Buscador de mascotas</small></h1>
-   </div>
-  <%= render 'layouts/header' %>
-   
-      <% if !flash[:notice].blank? %>
+    <% if !flash[:notice].blank? %>
         <div class="notice">
-          <%= flash[:notice] %>
+          <h2><%= flash[:notice] %><h2>
        </div>
     <% end %>
+ <div class="container">
+    <header class="navbar navbar-static-top bs-docs-nav">
+     <div class="navbar-header">
+      <h1>mascota <small>Buscador de mascotas</small></h1>
+    </div>
+   </header>
+  <%= render 'layouts/header' %>
+   
+
 
 
     <%= yield %>

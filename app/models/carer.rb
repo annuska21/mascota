@@ -26,11 +26,12 @@ class Carer < ActiveRecord::Base
   belongs_to :shelter
   validates :name, presence: true
   validates :last_name, presence: true
-  validates :dni, presence: true
+  validates :dni, presence: true, length: { is: 9 }
+  validates :postal_code, length: { is: 5 }
   validates :province, presence: true
   self.per_page = 5
   scope :sorted, lambda { order("carers.last_name ASC") }
-
+ 
   validates_format_of :dni, :with => /\A[0-9]{8}[A-Za-z]\Z/, :on => :update, :message => "El DNI tiene que tener un formato como el siguiente: 12345678A"
   validate :dni_letter_must_match_number
   

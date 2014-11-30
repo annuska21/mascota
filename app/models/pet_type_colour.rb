@@ -19,8 +19,5 @@ class PetTypeColour < ActiveRecord::Base
   end 
   
 
-
-
-
   attr_accessible :name, :description
 end

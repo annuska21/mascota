@@ -16,7 +16,7 @@
           :with_pet_type_ids,
           @filterrific.select_options[:with_pet_type_ids],
           { include_blank: '- Cualquiera -' },
-          :class => "form-control"
+          :class => "form-control chosen-select"
         ) %>
      
      </div>
@@ -26,7 +26,7 @@
           :with_pet_type_breed_id,
           @filterrific.select_options[:with_pet_type_breed_id],
           { include_blank: '- Cualquiera -' },
-          :class => "form-control"
+          :class => "form-control chosen-select"
         ) %>
      
       </div>
@@ -36,10 +36,19 @@
           :with_province, 
           @filterrific.select_options[:with_province],
           { include_blank: '- Cualquiera -' },
-           :class => "form-control"
+           :class => "form-control chosen-select"
         ) %>
      
       </div>
+        <h4>Selecciona el color <a data-toggle="modal" data-target=".bs-example-modal-lg"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></a></h4>
+
+
+        <%= f.select(
+          :with_pet_type_colour_id,
+          @filterrific.select_options[:with_pet_type_colour_id],
+          { include_blank: '- Cualquiera -' },
+          :class => "form-control chosen-select"
+        ) %>
 
       <div>
         <h4>Selecciona el refugio</h4>
@@ -47,7 +56,7 @@
           :with_shelter_id,
           @filterrific.select_options[:with_shelter_id],
           { include_blank: '- Cualquiera -' },
-          :class => "form-control"
+          :class => "form-control chosen-select"
         ) %>
      
       </div>
@@ -58,7 +67,7 @@
           :with_pet_size_id,
           @filterrific.select_options[:with_pet_size_id],
           { include_blank: '- Cualquiera -' },
-          :class => "form-control"
+          :class => "form-control chosen-select"
         ) %>
 
       </div>
@@ -69,7 +78,7 @@
           :with_hair_type_id,
           @filterrific.select_options[:with_hair_type_id],
           { include_blank: '- Cualquiera -' },
-          :class => "form-control"
+          :class => "form-control chosen-select"
         ) %>
      
       </div>
@@ -90,4 +99,28 @@
 </div> <!-- Final del row -->
 <div class="apple_pagination">
       <%= will_paginate @pets, :container => false %>
+</div>
+<!-- Large modal -->
+
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">¿Qué son los colores?</h4>
+      </div>
+      <div class="modal-body">
+        Hemos categorizado a las mascotas para que puedas seleccionarlas en función de su carácter, aquí tienes la descripción de cada uno de los colores:
+       <% @pet_type_colours.each do |pet_type_colour| %>
+        <ul>
+        <li><%= pet_type_colour.name %>: <%= pet_type_colour.description %></li>
+        </ul>
+    <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
 </div>

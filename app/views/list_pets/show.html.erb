@@ -50,14 +50,13 @@
       <b>Refugio:</b>
         <%= @pet.shelter.name %>
       </p>
-      <p>
-      <b>Contacto:</b>
-        <%= @pet.shelter.email %>
-        |
-        <%= @pet.shelter.phone if @pet.shelter.phone? %>
+      <p> Para adoptar a <%= @pet.name %> puedes contactar con nosotros en  
+      <b><%= @pet.shelter.email %></b>
+      <%= "o llamarnos al teléfono:" if @pet.shelter.phone? %>
+      <b><%= @pet.shelter.phone if @pet.shelter.phone? %></b>
       </p>
       <p>
-        <b>Requisitos de adopción:</b>
+        <b>Estos son los requisitos que exige <%= @pet.shelter.name %> para adoptar a <%= @pet.name %>:</b>
         <%= @pet.shelter.adoption_requirement %>
       </p>
     </div>

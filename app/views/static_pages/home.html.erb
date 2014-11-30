@@ -1,5 +1,40 @@
 
 <div class="jumbotron">
-  <h1>Encuentra la mascota que buscas</h1>
-    <p><%= link_to "¡Buscar una mascota!", list_pets_path, :class=>"btn btn-primary btn-lg" %></p>
+
+      <% if shelter_signed_in? %>      
+       <p> Para gestionar tus mascotas, puedes ir a la página de administración que encontrarás en la barra de navegación o pulsar en este enlace: <%= link_to "administracion", shelters_path %>
+       <% else %>
+     <h1>Encuentra la mascota que buscas</h1>
+       <p><%= link_to "¡Buscar una mascota!", list_pets_path, :class=>"btn btn-primary btn-lg" %></p>
+     <% end %>   
+  
+     
+     
+</div>
+<div class="row">
+<div class="col-md-6">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">¿Quieres aparecer en esta página?</h3>
+    </div>
+    <div class="panel-body">
+      <p>Si eres una asociación y quieres que tus mascotas aparezcan en esta página puedes darte de alta pulsando en el siguiente enlace: <br> <%= link_to "¡Soy una asociación protectora y quiero registrarme!", new_shelter_registration_path %>
+     
+    </div>
+  </div>
+
+</div>
+<div class="col-md-6">
+  <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">¿Quieres colaborar con una asociación protectora?</h3>
+      </div>
+      <div class="panel-body">
+        <p>Si quieres ser voluntario o acoger una mascota de una asociación puedes encontrar asociaciones cercanas de donde vivas o donde tu prefieras: <br> 
+        <%= link_to "Quiero colaborar con una asociación", list_shelters_path %>
+       
+      </div>
+    </div>
+</div>
+
 </div>

@@ -1,15 +1,25 @@
 
 
-  
-<%= form_tag list_shelters_path, :method => :get do %>  
-  <p>  
-    <%= text_field_tag :search, params[:search] %>  
-    <%= submit_tag "Buscar cerca de..", :name => nil %>  
-<% end %>  
+  <div class="row">
+    <div class="col-md-4">
+      <%= form_tag list_shelters_path, :method => :get, :class=>"form-inline" do %>  
+       
+          <%= submit_tag "Buscar cerca de..", :name => nil, :class=>"btn btn-info" %>  
+          <%= text_field_tag :search, params[:search], :class=>"form-control" %>  
+         
+      <% end %>  
+    </div>
+    <div class="col-md-8">
+      <p> Introduce código postal o localidad y la provincia para encontrar asociaciones protectoras cerca de donde prefieras.</p> 
+    </div>
+  </div>
+
 <!-- rest of page -->  
 <h3>Refugios</h3>
 <div class="row">
+
   <div class="col-md-12 col-lg-12 col-sm-12 hidden-xs">
+    <p>Número de asociaciones protectoras: <%= @shelters.size %>.</p>
       <table class="table table-hover">
         <tr>
           <th>Nombre</th>
@@ -38,6 +48,7 @@
   </div>
   
   <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+    <p>Número de asociaciones protectoras: <%= @shelters.size %>.</p>
     <% @shelters.each do |shelter| %>
        <p> Nombre: <%= shelter.name %></p>
        <p> Número de mascotas: <%= shelter.pets.en_adopcion.size %></p>

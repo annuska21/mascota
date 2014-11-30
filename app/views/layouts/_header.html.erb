@@ -21,19 +21,19 @@
          <li> <%= link_to "Login", new_shelter_session_path %></li>
        <% end %>        
       </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-        
-        <li><%= nav_link "Home", home_path %></li>
-        <li><%= nav_link "Buscador", list_pets_path %></li>
-        <li><%= nav_link "Cuidados", cuidados_path %></li>
-        <li><%= nav_link "Asociaciones", list_shelters_path %></li>
-        <% if shelter_signed_in? %>
-        <li><%= nav_link "Administracion", shelters_path %></li>
-        <% end %>
-      </ul>
+      <div class="centrado">
+        <ul class="nav navbar-nav">
+          
+          <li><%= nav_link "Home", home_path %></li>
+          <li><%= nav_link "Buscador", list_pets_path %></li>
+          <li><%= nav_link "Cuidados", cuidados_path %></li>
+          <li><%= nav_link "Asociaciones", list_shelters_path %></li>
+          <% if shelter_signed_in? %>
+          <li><%= nav_link "Administracion", shelters_path %></li>
+          <% end %>
+        </ul>
    
-
+      </div>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

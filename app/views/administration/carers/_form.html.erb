@@ -44,7 +44,7 @@
       </div>
       <div class="col-lg-3 col-md-3">
         <div class="field"><br>
-          <%= f.label(:locate, "Localizar") %>: 
+          <%= f.label(:locate, "Localizar") %><span>  </span><a data-toggle="modal" data-target=".bs-example-modal-lg"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></a> 
           <%= f.check_box :locate %>
          </div>
       </div>
@@ -92,6 +92,22 @@
        </div>
     </div><!--final columna -->
   </div><!--final del row -->
+  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">¿Quieres que las personas que buscan una mascota la encuentren por la casa en la que está acogida?</h4>
+      </div>
+      <div class="modal-body">
+        Marcando la casilla "Localizar", en las búsquedas, las mascotas que estén acogidas por <%= @carer.name %> <%= @carer.last_name %> aparecerán en su provincia, en vez de en la provincia de la asociación.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div><!-- final del modal -->
 
 
    

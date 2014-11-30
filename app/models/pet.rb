@@ -62,9 +62,8 @@ class Pet < ActiveRecord::Base
     where(:hair_type_id => [*hair_type_ids])
   }
       
-  #where(:pet_status_id => 0) | where(:pet_status_id => 2)
     scope :with_pet_type_colour_id, lambda { |pet_type_colour_ids|
-     where(:pet_type_colour_id => [*pet_type_colour_ids])
+    where(:pet_type_colour_id => [*pet_type_colour_ids])
   }
     scope :with_pet_type_breed_id, lambda { |pet_type_breed_ids|
     where(:pet_type_breed_id => [*pet_type_breed_ids])
