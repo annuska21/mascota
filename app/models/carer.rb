@@ -57,7 +57,7 @@ class Carer < ActiveRecord::Base
 
 
     def name_firstname
-    [name, last_name].compact.join(', ')
+    [last_name, name].compact.join(', ')
   end
 
   attr_accessible :inactive, :via, :town, :dni, :last_name, :street, :commentary, :postal_code, :email, :locate, :name, :province, :phone, :shelter_id

@@ -49,7 +49,7 @@
         <th>Nombre</th>
         <th>Cuidador</th>
         <th>Estado</th>  
-
+      
         <th></th>
       </tr>
 
@@ -62,9 +62,9 @@
         <td><%= pet.pet_type.name %></td>
         <td><%= pet.name %></td>
         <td><%= pet.carer.name_firstname if pet.carer %></td>
-         <td><%= pet.pet_status.name %></td>         
-       <td><%= link_to 'Editar', {:action => 'edit', :id => pet.id, :current_shelter_id => @shelter.id} %></td>
-        
+        <td><%= pet.pet_status.name %></td> 
+        <td><%= link_to 'Editar', {:action => 'edit', :id => pet.id, :current_shelter_id => @shelter.id} %></td>
+       
 
       </tr>
     <% end %>

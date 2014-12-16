@@ -7,10 +7,14 @@
     <div class="imagen">
       <%= image_tag(@pet.picture_url) if @pet.picture? %>
     </div>
+
   </div>
 
    <div class="col-lg-7 col-md-7">
     <%= link_to '<< Volver al listado', list_pets_path, :class=>"enlaces" %>
+    <div class="pull-right">
+      <%= social_share_button_tag(@pet.name, :popup => "true") %>
+    </div>
      <div class="info">
       <p>
         <b>Nombre</b>
@@ -60,6 +64,7 @@
         <%= @pet.shelter.adoption_requirement %>
       </p>
     </div>
+
    </div>
 
 

@@ -9,6 +9,7 @@ class ListSheltersController < ApplicationController
     else  
       @shelters = Shelter.paginate(:page => params[:page]).all
     end  
+    @shelter = Shelter.all
   end  
 
   def show

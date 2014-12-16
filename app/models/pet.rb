@@ -52,6 +52,7 @@ class Pet < ActiveRecord::Base
   scope :baja, lambda { where(:pet_status_id => PetStatus.all[3]) }
   scope :en_adopcion, lambda { where("pet_status_id = ? or pet_status_id = ?",PetStatus.all[0],PetStatus.all[2]) }
  
+
   scope :sorted, lambda { order("pets.name ASC") }
 
   scope :with_pet_size_id, lambda { |pet_size_ids|
@@ -72,10 +73,10 @@ class Pet < ActiveRecord::Base
     where(:shelter_id => [*shelter_ids])
   }
 
-
   scope :with_carer_id, lambda { |carer_ids|
    where(:carer_id => [*carer_ids])
   }
+
 
   def self.with_province province
     pets=[]
