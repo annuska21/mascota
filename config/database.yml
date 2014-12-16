@@ -8,8 +8,7 @@ development:
   database: mascotas_development
   pool: 5
   timeout: 5000
-  username: root
-  password: Mishkin1
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -19,15 +18,13 @@ test:
   database: mascotas_test
   pool: 5
   timeout: 5000
-  username: root
-  password: Mishkin1
+
 
 production:
   database: mascota
   adapter: mysql2
-  host: mascota.crijneydfqj6.eu-west-1.rds.amazonaws.com
+  host:
   pool: 5
   timeout: 5000
   port: 3306
-  username: root
-  password: Mishkin1
+ 

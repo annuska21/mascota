@@ -8,8 +8,8 @@ development:
   database: mascotas_development
   pool: 5
   timeout: 5000
-  username: root
-  password: Mishkin1
+  username: 
+  password: 
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -19,8 +19,8 @@ test:
   database: mascotas_test
   pool: 5
   timeout: 5000
-  username: root
-  password: Mishkin1
+  username: 
+  password: 
 
 production:
   database: mascotas_production
