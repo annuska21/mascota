@@ -29,7 +29,7 @@
           <th>Provincia</th>
           <th>Código postal</th>
           <th></th>
-
+          <th></th>
         </tr>
 
       <% @shelters.each do |shelter| %>
@@ -39,7 +39,7 @@
           <td><%= status_tag(shelter.carer_possibility) %></td>
           <td><%= status_tag(shelter.voluntary) %></td>
           <td><%= shelter.province %></td>
-           <td><%= shelter.postal_code %></td>
+          <td><%= shelter.postal_code %></td>
           <td><%= link_to 'Ver mascotas', {:action => "listed", :shelter_id => shelter.id} %></td>
           <td><%= link_to 'Detalles', list_shelter_path(shelter) %></td>
         </tr>
