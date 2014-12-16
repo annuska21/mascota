@@ -5,7 +5,7 @@
 <div class="row">
   <div class="col-lg-5 col-md-5">
     <div class="imagen">
-      <%= image_tag(@pet.picture_url) if @pet.picture? %>
+      <%= image_tag(@pet.picture_url, :class=>"img-responsive") if @pet.picture? %>
     </div>
 
   </div>
