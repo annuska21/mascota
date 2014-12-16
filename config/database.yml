@@ -8,6 +8,8 @@ development:
   database: mascotas_development
   pool: 5
   timeout: 5000
+  username: root
+  password: Mishkin1
 
 
 # Warning: The database defined as "test" will be erased and
@@ -18,6 +20,8 @@ test:
   database: mascotas_test
   pool: 5
   timeout: 5000
+  username: root
+  password: Mishkin1
 
 
 production:

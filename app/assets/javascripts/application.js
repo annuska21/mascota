@@ -17,6 +17,5 @@
 //= require filterrific/filterrific-jquery
 //= require chosen-jquery
 //= require scaffold
-//= require social-share-button
 //= require bootstrap-sprockets
 //= require_tree .
