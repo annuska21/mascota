@@ -24,7 +24,7 @@ gem 'bootstrap-sass',       '3.2.0.0'
 gem 'autoprefixer-rails'
 gem 'filterrific'
 gem 'chosen-rails'
-
+gem "simple-navigation"
 
 # Gems used only for assets and not required
 # in production environments by default.

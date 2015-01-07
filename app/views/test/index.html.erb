@@ -1,0 +1,23 @@
+<h1>Home#index</h1>
+<p>Find me in app/views/home/index.html.erb</p>
+
+<%= collection_select(nil, :pet_type_id,  @pet_types,  :id, :name, {:prompt   => "Select a Pet type"}, {:id => 'pet_types_select'}) %>
+<br/>
+<%= collection_select(nil, :pet_type_breeds_id, @pet_type_breeds, :id, :name, {:prompt   => "Select an breed"}, {:id => 'pet_type_breeds_select'}) %>
+<br/>
+
+ 
+<script>
+  $(document).ready(function() {
+    $('#pet_types_select').change(function() {
+      $.ajax({
+        url: "<%= update_breeds_path %>",
+        data: {
+          pet_type_id : $('#pet_types_select').val()
+        },
+        dataType: "script"
+      });
+    });
+
+  });
+</script>

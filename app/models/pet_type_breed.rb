@@ -21,5 +21,5 @@ class PetTypeBreed < ActiveRecord::Base
     order('LOWER(name)').map { |e| [e.name, e.id] }
   end 
   
-  attr_accessible :pet_type_id, :name
+  attr_accessible :pet_type_id, :name, :pet_type
 end

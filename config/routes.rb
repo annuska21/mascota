@@ -13,8 +13,8 @@ Mascota::Application.routes.draw do
 
   get "static_pages/help"
 
-
-
+  get 'test/update_breeds', :as => 'update_breeds'
+  get 'test/index', :as => 'pruebas'
   match "/cuidados" => "StaticPages#care" 
 
   #get "static_pages/shelters"
@@ -30,7 +30,7 @@ Mascota::Application.routes.draw do
     get 'listed'
     end
   end
-
+  
 
    scope :module => 'administration' do
     resources :shelters, :path => "administracion" do

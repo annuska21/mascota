@@ -15,13 +15,15 @@ class ListPetsController < ApplicationController
         with_carer_id: Carer.options_for_select,
         with_hair_type_id: HairType.options_for_select,
         with_pet_type_ids: PetType.options_for_select,
-        with_province: Province.options_for_select
+        with_province: Province.options_for_select,
+        with_gender: Gender.options_for_select,
+        with_age: Age.options_for_select
       }
         
       @pets = Pet.filterrific_find(@filterrific).en_adopcion.page(params[:page])
       @pet_type_colours = PetTypeColour.all
       session[:filterrific_pets] = @filterrific.to_hash
-
+      @pet = Pet.filterrific_find(@filterrific).en_adopcion
     
     rescue ActiveRecord::RecordNotFound => e
       # There is an issue with the persisted param_set. Reset it.

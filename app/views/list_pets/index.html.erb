@@ -30,6 +30,26 @@
         ) %>
      
       </div>
+      <div>
+       <h4> Filtra por género </h4>
+        <%= f.select(
+          :with_gender, 
+          @filterrific.select_options[:with_gender],
+          { include_blank: '- Cualquiera -' },
+           :class => "form-control chosen-select"
+        ) %>
+     
+      </div>
+      <div>
+       <h4> Filtra por años </h4>
+        <%= f.select(
+          :with_age, 
+          @filterrific.select_options[:with_age],
+          { include_blank: '- Cualquiera -' },
+           :class => "form-control chosen-select"
+        ) %>
+     
+      </div>
      <div>
        <h4> Filtra por provincia </h4>
         <%= f.select(

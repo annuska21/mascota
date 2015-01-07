@@ -42,7 +42,7 @@
     <%= status_tag(@shelter.voluntary) %>.
     <%= @shelter.voluntary_detail %>
   </p>
-
+  <p>
   <b>Informacion donaciones:</b>
     <%= @shelter.donation_information %>
   </p>
@@ -53,7 +53,9 @@
   </p>
 </div><!-- Final row columna datos -->
 <div class="col-lg-6 col-md-6">
-  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@shelter.latitude}%2c#{@shelter.longitude}" %>
+
+   <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@shelter.latitude}%2c#{@shelter.longitude}", :class=>"img-responsive" %>
+
 </div><!-- Final row columna imagen-->
 
 </div> <!-- Final row -->

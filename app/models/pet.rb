@@ -31,7 +31,9 @@ class Pet < ActiveRecord::Base
     :with_hair_type_id,
     :with_carer_id,
     :with_pet_type_ids,
-    :with_province
+    :with_province,
+    :with_gender,
+    :with_age
   ])
 
   attr_accessible :gender, :pet_type_breed_id, :pet_type_colour_id, :picture, :carer_id, :commentary, :birthday, :hair_type_id, :special_need, :name, :pet_size_id, :pet_status_id, :shelter_id
@@ -45,6 +47,7 @@ class Pet < ActiveRecord::Base
   belongs_to :pet_type_breed
   belongs_to :pet_type_colour
   has_one :pet_type, through: :pet_type_breed
+
 
   scope :refugio, lambda { where(:pet_status_id => PetStatus.all[0]) }
   scope :adoptada, lambda { where(:pet_status_id => PetStatus.all[1]) }
@@ -78,6 +81,7 @@ class Pet < ActiveRecord::Base
   }
 
 
+
   def self.with_province province
     pets=[]
     Pet.all.each do |pet|
@@ -88,9 +92,33 @@ class Pet < ActiveRecord::Base
     return where(:id => pets)
   end
 
+    def self.with_age age
+    ages=[]
+    Pet.all.each do |pet|
+      if pet.age == age
+        ages<<pet
+      end
+    end
+    return where(:id => ages)
+  end
+
+  def self.with_gender gender
+    genders=[]
+    Pet.all.each do |pet|
+      if pet.gender == gender
+        genders<<pet
+      end
+    end
+    return where(:id => genders)
+  end
+
+
   scope :with_pet_type_ids, lambda{ |pet_type_ids|
     joins(:pet_type).where("pet_types.id in (?)", pet_type_ids)
   }
+
+
+
 
   self.per_page = 6
 
@@ -99,6 +127,7 @@ class Pet < ActiveRecord::Base
  mount_uploader :picture, PictureUploader
 
  validate  :picture_size
+ validates :name, presence: true
 
   GENDER_TYPES = ["Desconocido", "Hembra", "Macho"]
 
