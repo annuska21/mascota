@@ -120,7 +120,7 @@ class Pet < ActiveRecord::Base
 
 
 
-  self.per_page = 6
+  self.per_page = 15
 
 
 
